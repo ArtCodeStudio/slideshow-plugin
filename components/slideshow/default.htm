@@ -1,5 +1,5 @@
 {% if __SELF__.slideshow.slides %}
-    <div id='__SELF__.slideshow.id' class="header-photo-carousel ah-carousel">
+    <div id='jlslideshow{{__SELF__.slideshow.id}}' class="header-photo-carousel ah-carousel">
 
     {% for i, slide in __SELF__.slideshow.slides %}
         <!-- if slide.active -->
@@ -32,8 +32,8 @@
                 // prevArrow
                 // nextArrow
                 centerMode:         false,  // Boolean({{__SELF__.slideshow.settings.centerMode}} === 'true'),
-                centerPadding:      50px,   // String({{__SELF__.slideshow.settings.centerPadding}}),
-                cssEase:            'ease'  // String({{__SELF__.slideshow.settings.cssEase}}),
+                centerPadding:      '50px',   // String({{__SELF__.slideshow.settings.centerPadding}}),
+                cssEase:            'ease',  // String({{__SELF__.slideshow.settings.cssEase}}),
                 // customPaging
                 dots:               false,  // Boolean({{__SELF__.slideshow.settings.dots}} === 'true'),
                 // dotsClass
@@ -71,7 +71,7 @@
                 // zIndex: 1000
             };
 
-            $('#{{__SELF__.slideshow.id}}').slick(slickSettings);
+            $('#jlslideshow{{__SELF__.slideshow.id}}').slick(slickSettings);
         </script>
     {% endput %}
 
