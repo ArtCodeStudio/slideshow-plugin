@@ -4,18 +4,18 @@
 
 columns:
     id:
-        label: flosch.slideshow::lang.columns.slide.id
+        label: jumplink.slideshow::lang.columns.slide.id
         searchable: true
     image:
         type: partial
-        path: ~/plugins/flosch/slideshow/models/slide/_image.htm
+        path: ~/plugins/jumplink/slideshow/models/slide/_image.htm
     name:
-        label: flosch.slideshow::lang.columns.slide.name
+        label: jumplink.slideshow::lang.columns.slide.name
         searchable: true
     link:
-        label: flosch.slideshow::lang.columns.slide.link
+        label: jumplink.slideshow::lang.columns.slide.link
         searchable: true
     is_published:
-        label: flosch.slideshow::lang.columns.slide.is_published
+        label: jumplink.slideshow::lang.columns.slide.is_published
         span: left
         type: checkbox

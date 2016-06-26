@@ -1,6 +1,6 @@
 <?php
 
-namespace Flosch\Slideshow\Updates;
+namespace JumpLink\Slideshow\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
@@ -10,8 +10,8 @@ class CreateSlidesTable extends Migration
 
     public function up()
     {
-        if (!Schema::hasTable('flosch_slideshow_slides')) {
-            Schema::create('flosch_slideshow_slides', function ($table) {
+        if (!Schema::hasTable('jumplink')) {
+            Schema::create('jumplink_slideshow_slides', function ($table) {
                 $table->engine = 'InnoDB';
                 $table->increments('id');
                 $table->string('name')->nullable();
@@ -21,14 +21,14 @@ class CreateSlidesTable extends Migration
                 $table->timestamps();
                 $table->integer('slideshow_id')->unsigned()->nullable();
 
-                $table->foreign('slideshow_id')->references('id')->on('flosch_slideshow_slideshows')->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('slideshow_id')->references('id')->on('jumplink_slideshow_slideshows')->onUpdate('cascade')->onDelete('cascade');
             });
         }
     }
 
     public function down()
     {
-        Schema::dropIfExists('flosch_slideshow_slides');
+        Schema::dropIfExists('jumplink_slideshow_slides');
     }
 
 }

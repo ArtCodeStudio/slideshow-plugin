@@ -1,13 +1,13 @@
 <?php
 
-namespace Flosch\Slideshow\Controllers;
+namespace JumpLink\Slideshow\Controllers;
 
 use Flash;
 use Lang;
 use BackendMenu;
 use Backend\Classes\Controller;
 
-use Flosch\Slideshow\Models\Slideshow;
+use JumpLink\Slideshow\Models\Slideshow;
 
 /**
  * Slideshow Back-end Controller
@@ -28,7 +28,7 @@ class Slideshows extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Flosch.Slideshow', 'slideshow', 'slideshows');
+        BackendMenu::setContext('JumpLink.Slideshow', 'slideshow', 'slideshows');
     }
 
     public function index_onDelete()
@@ -44,7 +44,7 @@ class Slideshows extends Controller
         }
 
         Flash::success(Lang::get('backend::lang.list.delete_selected_success', [
-            'name' => Lang::get('flosch.slideshow::lang.controller.form.slideshows.title')
+            'name' => Lang::get('jumplink.slideshow::lang.controller.form.slideshows.title')
         ]));
 
         return $this->listRefresh();

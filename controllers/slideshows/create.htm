@@ -1,8 +1,8 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li>
-            <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>">
-                <?= e(trans('flosch.slideshow::lang.controller.view.slideshows.breadcrumb_label')) ?>
+            <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>">
+                <?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.breadcrumb_label')) ?>
             </a>
         </li>
         <li><?= e($this->pageTitle) ?></li>
@@ -24,7 +24,7 @@
                     class="btn btn-primary"
                     data-request="onSave"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('flosch.slideshow::lang.controller.view.slideshows.creating')) ?>">
+                    data-load-indicator="<?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.creating')) ?>">
                     <?= e(trans('backend::lang.form.create')) ?>
                 </button>
                 <button
@@ -33,11 +33,11 @@
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('flosch.slideshow::lang.controller.view.slideshows.creating')) ?>">
+                    data-load-indicator="<?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.creating')) ?>">
                     <?= e(trans('backend::lang.form.create_and_close')) ?>
                 </button>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -48,8 +48,8 @@
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
     <p>
-        <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>" class="btn btn-default">
-            <?= e(trans('flosch.slideshow::lang.controller.view.slideshows.return')) ?>
+        <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>" class="btn btn-default">
+            <?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.return')) ?>
         </a>
     </p>
 

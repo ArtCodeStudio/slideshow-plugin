@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/flosch/slideshow/models/slideshow/columns.yml
+list: $/jumplink/slideshow/models/slideshow/columns.yml
 
 # Model Class name
-modelClass: Flosch\Slideshow\Models\Slideshow
+modelClass: JumpLink\Slideshow\Models\Slideshow
 
 # List Title
-title: flosch.slideshow::lang.controller.list.slideshows
+title: jumplink.slideshow::lang.controller.list.slideshows
 
 # Link URL for each record
-recordUrl: flosch/slideshow/slideshows/update/:id
+recordUrl: jumplink/slideshow/slideshows/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

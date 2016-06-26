@@ -1,6 +1,6 @@
 <?php
 
-namespace Flosch\Slideshow\Models;
+namespace JumpLink\Slideshow\Models;
 
 use Model;
 
@@ -10,7 +10,7 @@ class Slideshow extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'flosch_slideshow_slideshows';
+    public $table = 'jumplink_slideshow_slideshows';
 
     /**
      * @var array Fillable fields
@@ -32,9 +32,9 @@ class Slideshow extends Model
     ];
 
     public $hasMany = [
-        'slides' => 'Flosch\Slideshow\Models\Slide',
+        'slides' => 'JumpLink\Slideshow\Models\Slide',
         'slides_count' => [
-            'Flosch\Slideshow\Models\Slide',
+            'JumpLink\Slideshow\Models\Slide',
             'count' => true
         ]
     ];

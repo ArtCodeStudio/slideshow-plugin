@@ -4,27 +4,27 @@
 
 fields:
     name:
-        label: flosch.slideshow::lang.fields.slide.name
+        label: jumplink.slideshow::lang.fields.slide.name
         span: left
     link:
-        label: flosch.slideshow::lang.fields.slide.link
+        label: jumplink.slideshow::lang.fields.slide.link
         span: right
     unpublished_at:
-        label: flosch.slideshow::lang.fields.slide.unpublished_at
+        label: jumplink.slideshow::lang.fields.slide.unpublished_at
         span: right
         type: datepicker
     published_at:
-        label: flosch.slideshow::lang.fields.slide.published_at
+        label: jumplink.slideshow::lang.fields.slide.published_at
         span: left
         type: datepicker
     is_published:
-        label: flosch.slideshow::lang.fields.slide.is_published
+        label: jumplink.slideshow::lang.fields.slide.is_published
         span: left
         type: checkbox
     description:
-        label: flosch.slideshow::lang.fields.slide.description
+        label: jumplink.slideshow::lang.fields.slide.description
         type: richeditor
     image:
-        label: flosch.slideshow::lang.fields.slide.image
+        label: jumplink.slideshow::lang.fields.slide.image
         type: fileupload
         mode: image

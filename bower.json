@@ -1,0 +1,25 @@
+{
+  "name": "jumplink-slideshow",
+  "homepage": "https://github.com/JumpLinkNetwork/slideshow-plugin",
+  "authors": [
+    "Moritz Raguschat <moritz.raguschat@web.de>"
+  ],
+  "description": "slideshow plugin for octobercms, based on flosch slideshow",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0",
+    "slick-carousel": "~1.6.0",
+    "jquery-migrate": "~3.0.0"
+  }
+}

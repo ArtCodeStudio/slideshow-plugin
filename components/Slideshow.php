@@ -1,12 +1,12 @@
 <?php
 
-namespace Flosch\Slideshow\Components;
+namespace JumpLink\Slideshow\Components;
 
 use Lang;
 
 use Cms\Classes\ComponentBase;
 
-use Flosch\Slideshow\Models\Slideshow as SlideshowModel;
+use JumpLink\Slideshow\Models\Slideshow as SlideshowModel;
 
 class Slideshow extends ComponentBase
 {
@@ -15,8 +15,8 @@ class Slideshow extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'flosch.slideshow::lang.components.slideshow.name',
-            'description' => 'flosch.slideshow::lang.components.slideshow.description'
+            'name'        => 'jumplink.slideshow::lang.components.slideshow.name',
+            'description' => 'jumplink.slideshow::lang.components.slideshow.description'
         ];
     }
 
@@ -24,15 +24,15 @@ class Slideshow extends ComponentBase
     {
         return [
             'slideshow' => [
-                'title'         => 'flosch.slideshow::lang.components.slideshow.properties.id.title',
-                'description'   => 'flosch.slideshow::lang.components.slideshow.properties.id.description',
-                'placeholder'   => Lang::get('flosch.slideshow::lang.components.slideshow.properties.id.placeholder'),
+                'title'         => 'jumplink.slideshow::lang.components.slideshow.properties.id.title',
+                'description'   => 'jumplink.slideshow::lang.components.slideshow.properties.id.description',
+                'placeholder'   => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.id.placeholder'),
                 'type'          => 'dropdown'
             ],
             'numberOfSlide' => [
-                'title'             => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.title',
-                'description'       => 'flosch.slideshow::lang.components.slideshow.properties.number_of_slide.description',
-                'placeholder'       => Lang::get('flosch.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder'),
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.number_of_slide.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.number_of_slide.description',
+                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.number_of_slide.placeholder'),
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'default'           => '5',
@@ -61,5 +61,11 @@ class Slideshow extends ComponentBase
         ;
 
         $this->slideshow = $slideshowQueryBuilder->firstOrFail();
+
+        $this->addCss('assets/vendor/slick/slick.css');
+        $this->addCss('assets/vendor/slick/slick-theme.css');
+        $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
+        $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
+        $this->addJs('assets/vendor/slick-carousel/slick/slick.min.js');
     }
 }

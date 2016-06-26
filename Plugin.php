@@ -1,6 +1,6 @@
 <?php
 
-namespace Flosch\Slideshow;
+namespace JumpLink\Slideshow;
 
 use System\Classes\PluginBase;
 use Backend;
@@ -11,10 +11,10 @@ class Plugin extends PluginBase
     {
         return [
             'name' => 'Slideshow',
-            'description' => 'Manage Twitter Bootstrap carousels with additional content.',
-            'author' => 'Flosch',
+            'description' => 'Manage Slick carousels with additional content.',
+            'author' => 'Moritz Raguschat [JumpLink Network]',
             'icon' => 'icon-picture-o',
-            'homepage' => ''
+            'homepage' => 'http://jumplink.eu'
         ];
     }
 
@@ -24,9 +24,9 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'flosch.slideshow.access_slideshow' => [
-                'tab'   => 'flosch.slideshow::lang.permissions.tab',
-                'label' => 'flosch.slideshow::lang.permissions.manage',
+            'jumplink.slideshow.access_slideshow' => [
+                'tab'   => 'jumplink.slideshow::lang.permissions.tab',
+                'label' => 'jumplink.slideshow::lang.permissions.manage',
             ],
         ];
     }
@@ -35,17 +35,17 @@ class Plugin extends PluginBase
     {
         return [
             'slideshow' => [
-                'label' => 'flosch.slideshow::lang.navigation.label',
-                'url' => Backend::url('flosch/slideshow/slideshows'),
+                'label' => 'jumplink.slideshow::lang.navigation.label',
+                'url' => Backend::url('jumplink/slideshow/slideshows'),
                 'icon' => 'icon-picture-o',
-                'permissions' => ['flosch.slideshow.access_slideshow'],
+                'permissions' => ['jumplink.slideshow.access_slideshow'],
                 'order' => 500,
                 'sideMenu' => [
                     'slideshows' => [
-                        'permissions' => ['flosch.slideshow.access_slideshow'],
-                        'label' => 'flosch.slideshow::lang.navigation.sideMenu.slideshows',
+                        'permissions' => ['jumplink.slideshow.access_slideshow'],
+                        'label' => 'jumplink.slideshow::lang.navigation.sideMenu.slideshows',
                         'icon' => 'icon-picture-o',
-                        'url' => Backend::url('flosch/slideshow/slideshows'),
+                        'url' => Backend::url('jumplink/slideshow/slideshows'),
                     ]
                 ]
             ]
@@ -55,7 +55,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Flosch\Slideshow\Components\Slideshow' => 'slideshow'
+            'JumpLink\Slideshow\Components\Slideshow' => 'slideshow'
         ];
     }
 }

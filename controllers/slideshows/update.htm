@@ -1,8 +1,8 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li>
-            <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>">
-                <?= e(trans('flosch.slideshow::lang.controller.view.slideshows.breadcrumb_label')) ?>
+            <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>">
+                <?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.breadcrumb_label')) ?>
             </a>
         </li>
         <li><?= e($this->pageTitle) ?></li>
@@ -43,10 +43,10 @@
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="<?= e(trans('backend::lang.form.deleting')) ?>"
-                    data-request-confirm="<?= e(trans('flosch.slideshow::lang.controller.view.slideshows.delete_confirmation')) ?>">
+                    data-request-confirm="<?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.delete_confirmation')) ?>">
                 </button>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -57,8 +57,8 @@
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
     <p>
-        <a href="<?= Backend::url('flosch/slideshow/slideshows') ?>" class="btn btn-default">
-            <?= e(trans('flosch.slideshow::lang.controller.view.slideshows.return')) ?>
+        <a href="<?= Backend::url('jumplink/slideshow/slideshows') ?>" class="btn btn-default">
+            <?= e(trans('jumplink.slideshow::lang.controller.view.slideshows.return')) ?>
         </a>
     </p>
 

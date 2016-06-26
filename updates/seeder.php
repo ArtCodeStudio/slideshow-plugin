@@ -1,11 +1,11 @@
 <?php
 
-namespace Flosch\Slideshow\Updates;
+namespace JumpLink\Slideshow\Updates;
 
 use October\Rain\Database\Updates\Seeder as BaseSeeder;
 
-use Flosch\Slideshow\Models\Slideshow,
-    Flosch\Slideshow\Models\Slide;
+use JumpLink\Slideshow\Models\Slideshow,
+    JumpLink\Slideshow\Models\Slide;
 
 class Seeder extends BaseSeeder
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flosch\Slideshow\Models;
+namespace JumpLink\Slideshow\Models;
 
 use Model;
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ class Slide extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'flosch_slideshow_slides';
+    public $table = 'jumplink_slideshow_slides';
 
     /**
      * @var array Fillable fields
@@ -50,7 +50,7 @@ class Slide extends Model
      * @var array Model relations
      */
     public $belongsTo = [
-        'slideshow' => ['Flosch\Slideshow\Models\Slideshow']
+        'slideshow' => ['JumpLink\Slideshow\Models\Slideshow']
     ];
 
     /**

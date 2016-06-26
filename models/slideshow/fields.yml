@@ -4,5 +4,5 @@
 
 fields:
     name:
-        label: flosch.slideshow::lang.fields.slideshow.name
+        label: jumplink.slideshow::lang.fields.slideshow.name
         searchable: true

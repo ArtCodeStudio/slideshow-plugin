@@ -4,13 +4,13 @@
 
 columns:
     id:
-        label: flosch.slideshow::lang.columns.slideshow.id
+        label: jumplink.slideshow::lang.columns.slideshow.id
         searchable: true
     name:
-        label: flosch.slideshow::lang.columns.slideshow.name
+        label: jumplink.slideshow::lang.columns.slideshow.name
         searchable: true
     slides_count:
-        label: flosch.slideshow::lang.columns.slideshow.slides_count
+        label: jumplink.slideshow::lang.columns.slideshow.slides_count
         relation: slides_count
         valueFrom: count
         default: 0

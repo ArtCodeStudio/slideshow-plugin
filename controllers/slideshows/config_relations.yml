@@ -3,11 +3,11 @@
 # ===================================
 
 slides:
-    label: flosch.slideshow::lang.controller.config.relation.label
+    label: jumplink.slideshow::lang.controller.config.relation.label
     view:
-        list: $/flosch/slideshow/models/slide/columns.yml
+        list: $/jumplink/slideshow/models/slide/columns.yml
         toolbarButtons: create|delete
     manage:
-        form: $/flosch/slideshow/models/slide/fields.yml
+        form: $/jumplink/slideshow/models/slide/fields.yml
         recordsPerPage: 20
-    emptyMessage: flosch.slideshow::lang.controller.config.relation.emptyMessage
+    emptyMessage: jumplink.slideshow::lang.controller.config.relation.emptyMessage
