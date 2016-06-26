@@ -62,8 +62,8 @@ class Slideshow extends ComponentBase
 
         $this->slideshow = $slideshowQueryBuilder->firstOrFail();
 
-        $this->addCss('assets/vendor/slick/slick.css');
-        $this->addCss('assets/vendor/slick/slick-theme.css');
+        $this->addCss('assets/vendor/slick-carousel/slick/slick.css');
+        $this->addCss('assets/vendor/slick-carousel/slick/slick-theme.css');
         $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
         $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
         $this->addJs('assets/vendor/slick-carousel/slick/slick.min.js');
