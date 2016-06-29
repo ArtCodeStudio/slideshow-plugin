@@ -36,6 +36,11 @@
                     'description' => 'whether css should be injected by the component',
                     'placeholder' => 'true',
                 ],
+
+                'captionPosition' => [
+                    'title' => 'captionPosition',
+                    'description' => 'specify css classes for caption positioning: top, middle, bottom | left, center, right',
+                ],
                 
                 'accessibility' => [
                     'title' => 'accessibility',

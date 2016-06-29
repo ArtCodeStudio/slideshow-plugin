@@ -30,3 +30,54 @@
 .background-box.ratio-3-4 {
   padding-top: 125%;
 }
+
+/**
+ * Custom carousel styles
+ */
+.slick-slide {
+  position: relative;
+}
+.carousel-caption {
+  hr {
+    width: 25%;
+    border-width: 3px;
+    border-color: #000;
+  }
+  &.top {
+    top: 0;
+    padding-top: 0;
+  }
+  &.middle {
+    // https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+  }
+  &.bottom {
+    bottom: 0;
+    padding-bottom: 0;
+  }
+  &.left {
+    left: 0;
+    right: inherit;
+  }
+  &.center {
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+  }
+  &.right {
+    left: inherit;
+    right: 0;
+  }
+  display: flex;
+ .carousel-caption-wrapper {
+    @media (max-width: $screen-xs-max) {
+      margin: 0;
+    }
+  }
+}

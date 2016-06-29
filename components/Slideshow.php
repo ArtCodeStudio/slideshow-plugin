@@ -44,6 +44,14 @@ class Slideshow extends ComponentBase
                 'type'              => 'checkbox',
                 'default'           => true,
             ],
+
+            'captionPosition' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.description',
+                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.captionPosition.placeholder'),
+                'type' => 'string',
+                'default' => 'middle center',
+            ],
             
             'accessibility' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.accessibility.title',
