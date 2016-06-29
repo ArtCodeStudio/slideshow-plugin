@@ -4,7 +4,7 @@
   "authors": [
     "Moritz Raguschat <moritz.raguschat@web.de>"
   ],
-  "description": "slideshow plugin for octobercms, based on flosch slideshow",
+  "description": "Slideshow plugin for OctoberCMS, based on Flosch Slideshow",
   "main": "",
   "moduleType": [],
   "license": "MIT",
