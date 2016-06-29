@@ -468,6 +468,7 @@ class Slideshow extends ComponentBase
         {
             $this->addCss('assets/vendor/slick-carousel/slick/slick.css');
             $this->addCss('assets/vendor/slick-carousel/slick/slick-theme.css');
+            $this->addCss('assets/css/backgroundbox.css');
         }
 
         $this->addJs('assets/vendor/jquery/dist/jquery.min.js');

@@ -1,10 +1,10 @@
 {% if __SELF__.slideshow.slides %}
-    <div id='jlslideshow{{__SELF__.slideshow.id}}' class="slider">
+    <div id='jlslideshow{{__SELF__.slideshow.id}}'>
 
     {% for i, slide in __SELF__.slideshow.slides %}
         <div>
           <a href="{{ slide.link }}">  <!-- slide.href -->
-            <img src="{{slide.image.path}}">
+            <div class="background-box ratio-16-9" style="background-image: url({{ slide.image.path }});">
             {% if slide.title != blank or slide.description != blank %} <!-- slide.text -->
               <div class="carousel-caption col-xs-12 col-sm-6 col-md-4 col-lg-4"> <!--   slide.position  -->
                 <div class="carousel-caption-wrapper m-x-2 m-y-2">
@@ -13,6 +13,7 @@
                 </div>
               </div>
             {% endif %}
+            </div>
           </a>
         </div>
     {% endfor %}
