@@ -1,3 +1,17 @@
-<?php if (!is_null($record->image)): ?>
-    <img class='img-responsive' src='<?php echo $record->image->getPath(); ?>' alt='' width='100'>
-<?php endif; ?>
+<?php
+echo "<b>image:</b> ";
+if (is_null($record->image)):
+	echo "none<br>\n";
+else:
+	echo $record->image->getExtension()."<br>\n";
+	if ($record->image->isImage()): ?>
+    	<img class='img-responsive' src='<?php echo $record->image->getPath(); ?>' alt='' width='100'>
+<?php
+	endif; 
+endif;
+echo "<br><b>video formats</b><br>\n".
+		"<b>mp4:</b> ".(is_null($record->mp4)?"no":"yes")."<br>\n".
+		"<b>webm:</b> ".(is_null($record->webm)?"no":"yes")."<br>\n".
+		"<b>ogg:</b> ".(is_null($record->ogg)?"no":"yes");
+
+?>

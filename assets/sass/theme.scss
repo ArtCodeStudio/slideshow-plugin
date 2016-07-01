@@ -1,0 +1,354 @@
+@import "./variables";
+@import "../vendor/bootstrap/scss/bootstrap.scss";
+@import "../vendor/font-awesome/scss/font-awesome.scss";
+@import "../vendor/slick-carousel/slick/slick.scss";
+@import "../vendor/slick-carousel/slick/slick-theme.scss";
+
+@import "./mixins";
+@import "./animate";
+@import "./shadow";
+@import "./fonts";
+@import "./load-awesome";
+@import "./clouds";
+@import "./navbar";
+@import "./sidebar";
+@import "./sticky";
+@import "./location";
+@import "./card";
+@import "./carousel";
+@import "./header";
+@import "./type";
+@import "./parts";
+@import "./buttons";
+@import "./images";
+@import "./modals";
+@import "./blog";
+
+// http://stackoverflow.com/a/33455377
+html {
+    //overflow: hidden;
+    // height: 100%;
+}
+
+body {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
+    position: relative;
+    font-weight: $default-font-weight;
+    &.affix--blw {
+        padding-top: 61.12px
+    }
+}
+
+.bg-danger, .bg-info, .bg-primary {
+  color: white;
+  .navbar-nav .nav-link {
+      color: white;
+  }
+}
+
+.center-block {
+  margin-right: auto !important;
+  margin-left:  auto !important;
+  display: block;
+}
+
+:not(nav).bg-inverse {
+    a {
+        &:hover {
+            color: $navbar-dark-active-color;
+        }
+        color: $navbar-dark-color;
+    }
+}
+
+.icon-circle {
+    border-radius: 50%;
+    border: 1px $gray-dark solid;
+    
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    line-height: 78px;
+    margin: 0 auto 20px;
+    .fa {
+        color: $gray-dark;
+        font-size: 30px;
+    }
+}
+
+
+
+.grayscale {
+     -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+     -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+     -webkit-filter: grayscale(100%);
+     filter: gray;
+     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+     transition: all 500ms ease-in;
+}
+
+.learn-more {
+    position: relative;
+    bottom: 150px;
+}
+
+
+// hide svg pathes
+.hidden-pathes {
+    path {
+        stroke: transparent !important;
+    }
+}
+
+// white svg pathes
+.white-pathes {
+    path {
+        stroke: white !important;
+    }
+}
+
+.bg-gray-lighter {
+    background-color: $gray-lighter;
+}
+
+.bg-gray-light {
+    background-color: $gray-light;
+}
+
+
+.bg-body {
+    background-color: $body-bg;
+}
+
+
+
+// javascript links
+[onclick] {
+    cursor: pointer;
+}
+
+// List group
+// black list-group-items
+.list-group-item {
+    &.active-bg-inverse {
+        &.active {
+            @extend .bg-inverse;
+            border-color: $gray-dark;
+            &:hover {
+                @extend .bg-inverse;
+            }
+        }
+        &:hover {
+            background-color: $gray-lighter;
+        }
+    }
+}
+
+select[name="locale"] {
+    @extend .c-select;
+    @extend .bg-inverse;
+    opacity: 0.5;
+    
+    &:hover {
+        opacity: 0.75;
+    }
+
+    border: none;
+}
+
+.fa {
+    &.fa-whatsapp {
+        color: #34af23;
+    }
+    &.fa-facebook-official {
+        color: #3b5998;
+    }
+    &.fa-google-plus {
+        color: #dd4b39;
+    }
+    &.fa-envelope {
+        color: white;
+    }
+    &.fa-mobile {
+        color: white;
+    }
+}
+
+.fadeInLeftOnViewport,
+.fadeInRightOnViewport {
+    opacity: 0;
+    &.animationDone {
+        opacity: 1;
+    } 
+}
+
+// anker elements with padding with navbar height to avoid scroll position overlap
+div[data-target] {
+    padding-top: 54px;
+    margin-top: -70px;
+}
+
+#top {
+    position: relative;
+    &[data-target] {
+        margin-top: 0;
+    }
+}
+
+#about {
+    .peace-image {
+        max-height: 300px;
+    }
+}
+ 
+#apps {
+    background-color: #b1e9f2;
+    overflow-x: hidden; // hide clouds for bad x scrolling
+    .appdesign-video, .crossplattform-image {
+        max-height: 300px;
+    }
+    .svg_apps_col {
+        background-image: url(../images/header/apps_background.svg);
+        background-position: center bottom;
+        background-repeat:repeat-x;
+        height: 500px;
+        .foreground, .foreground_finger {
+            background-repeat: no-repeat;
+            position: absolute;
+            pointer-events: none;
+        }
+        .foreground {
+            background-image: url(../images/header/apps_foreground.svg);
+            background-position: center bottom;
+            height: 500px;
+            width: 100%;
+            z-index: 2;
+        }
+        .foreground_finger {
+            background-image: url(../images/header/apps_foreground_finger.svg);
+            background-position: center 200px; 
+            height: 500px;
+            width: 100%;
+            z-index: 3;
+        }
+        .framewrapper {
+            position: relative;
+            top: 16px; // TODO calc this?
+            height: 250px * $apps-iframe-decrease;
+            width: 160px * $apps-iframe-decrease;
+            -webkit-transform: scale(1 / $apps-iframe-decrease);
+            -moz-transform: scale(1 / $apps-iframe-decrease);
+            -ms-transform: scale(1 / $apps-iframe-decrease);
+            -o-transform: scale(1 / $apps-iframe-decrease);
+            transform: scale(1 / $apps-iframe-decrease);
+            background-color: white;
+            .la-square-jelly-box {
+                position: absolute;
+                margin: 70% 45%;
+            }
+            iframe {
+                position: relative;
+                width: 100%;
+                height: 100%; 
+                border: none;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+#ecommerce {
+    .description {
+        .bindings-image,  .markets-image, .erp-image, .custom-image {
+            max-height: 300px;
+        }
+    }
+
+    background-color: #b1e9f2;
+    .svg-wrapper {
+        background-image: url(../images/header/ecommerce_background_spring.svg);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: auto 100%;
+    }
+    #street {
+        width: 100%;
+    }
+}
+
+#web {
+    background-color: #b1e9f2;
+    
+    .content-image, .files-image, .responsive-image, .code-image {
+        max-height: 300px;
+    }
+    
+    .svg-wrapper {
+        position: relative;
+        // top: -150px;
+        // margin-bottom: -150px;
+        @include media-breakpoint-down(sm) {
+            // top: -100px;
+            // margin-bottom: -100px;
+        }
+        #webdevelopment {
+            width: 100%;
+        }
+    }
+}
+
+#design {
+    header {
+        padding-top: $navbar-height + 1;
+        margin-top: -1px; // svg blitzen verhindern
+    }
+    
+    .corporate-image {
+        max-height: 200px;
+    }
+}
+
+#contact {
+
+}
+
+.contact-image {
+    max-height: 300px;
+}
+.contact-methods {
+    a {
+        height: 36px;
+        width: 36px;
+        .fa {
+            font-size: 36px;
+            height: 36px;
+            &.fa-mobile {
+                padding-left: 10px;
+            }
+        }
+    }
+}
+
+#imprint {
+    .imprint-brand {
+        max-height: 100px;
+    }
+    dd {
+        margin-bottom: 0;
+    }
+}
+
+#blogposts {
+    header {
+        // padding-top: $navbar-height;
+        img.blogposts-header {
+            width: 100%;
+        }
+    }
+    .card {
+
+    }
+}

@@ -1,0 +1,8 @@
+#development, #network, #contact, #imprint {
+     transition: all 500ms ease-in;
+}
+
+#SideInMaintenanceMode {
+     @extend .bg-inverse;
+     @extend .bg-primary;
+}

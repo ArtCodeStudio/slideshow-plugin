@@ -41,6 +41,11 @@
                     'title' => 'captionPosition',
                     'description' => 'specify css classes for caption positioning: top, middle, bottom | left, center, right',
                 ],
+
+                'autoplayVideos' => [
+                    'title' => 'autoplayVideos',
+                    'description' => 'autoplay videos if there are any in the slideshow',
+                ],
                 
                 'accessibility' => [
                     'title' => 'accessibility',
@@ -385,6 +390,9 @@
             'description' => 'Description',
             'link' => 'Target link',
             'image' => 'Image',
+            'mp4' => 'mp4',
+            'webm' => 'webm',
+            'ogg' => 'ogg',
             'unpublished_at' => 'Finish publishing',
             'published_at' => 'Start publishing',
             'is_published' => 'Published?',

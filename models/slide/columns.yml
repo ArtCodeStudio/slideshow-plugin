@@ -9,6 +9,7 @@ columns:
     image:
         type: partial
         path: ~/plugins/jumplink/slideshow/models/slide/_image.htm
+        sortable: false
     name:
         label: jumplink.slideshow::lang.columns.slide.name
         searchable: true

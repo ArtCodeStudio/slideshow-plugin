@@ -18,6 +18,8 @@
     "tests"
   ],
   "dependencies": {
+    "font-awesome": "^4.5.0",
+    "bootstrap": "v4.0.0-alpha.2",
     "jquery": ">=1.9.0",
     "slick-carousel": "~1.6.0",
     "jquery-migrate": "~3.0.0"

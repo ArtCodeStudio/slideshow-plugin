@@ -28,3 +28,20 @@ fields:
         label: jumplink.slideshow::lang.fields.slide.image
         type: fileupload
         mode: image
+        fileTypes: jpg,jpeg,png,bmp,gif
+    mp4:
+        label: jumplink.slideshow::lang.fields.slide.mp4
+        type: fileupload
+        mode: file
+        fileTypes: mp4
+    ogg:
+        label: jumplink.slideshow::lang.fields.slide.ogg
+        type: fileupload
+        mode: file
+        fileTypes: ogg
+    webm:
+        label: jumplink.slideshow::lang.fields.slide.webm
+        type: fileupload
+        mode: file
+        fileTypes: webm
+

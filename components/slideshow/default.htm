@@ -2,8 +2,17 @@
     <div id='jlslideshow{{__SELF__.slideshow.id}}'>
 
     {% for i, slide in __SELF__.slideshow.slides %}
+        <div>
           <a href="{{ slide.link }}">  <!-- slide.href -->
+
+            {%if slide.mp4 != blank %}
+            <div style="width:100%;height: 360px; position: absolute; top: 0; left: 0;">
+                            <video preload autoplay loop muted width="100%">
+                                <source src="{{slide.mp4.path}}" type="video/mp4">
+                            </video>
+            {% else %}
             <div class="background-box ratio-16-9" style="background-image: url({{ slide.image.path }});">
+            {% endif %}
             {% if slide.title != blank or slide.description != blank %} <!-- slide.text -->
               <div class="carousel-caption col-xs-12 col-sm-6 col-md-4 col-lg-4 {{__SELF__.property('captionPosition')}}"> <!--   slide.position  -->
                 <div class="carousel-caption-wrapper m-x-2 m-y-2">
@@ -14,6 +23,7 @@
             {% endif %}
             </div>
           </a>
+        </div>
     {% endfor %}
     </div>
 
@@ -25,20 +35,20 @@
                 autoplay:           Boolean( {{ __SELF__.property('autoplay') }} ) === true,  // false
                 autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),   // 3000
                 arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true ,   // true
-                // asNavFor
-                // appendArrows
-                // appendDots
-                // prevArrow
-                // nextArrow
-                centerMode:         Boolean( {{ __SELF__.property('accessibility') }} ) === true ,   // false
+{{ __SELF__.property('asNavFor') == blank ? '//' : '' }}                                asNavFor:           String("{{ __SELF__.property('asNavFor') }}"), 
+{{ __SELF__.property('appendArrows') == blank ? '//' : '' }}                appendArrows:       {{ __SELF__.property('appendArrows') | raw}},
+{{ __SELF__.property('appendDots') == blank ? '//' : '' }}                appendDots:         {{ __SELF__.property('appendDots') | raw}},
+                prevArrow:          String('{{ __SELF__.property("prevArrow") | raw}}'),
+                nextArrow:          String('{{ __SELF__.property("nextArrow") | raw}}'),
+                centerMode:         Boolean("{{ __SELF__.property('accessibility') }}") === true ,   // false
                 centerPadding:      String("{{__SELF__.property('centerPadding')}}"), // '50px'
                 cssEase:            String("{{__SELF__.property('cssEase')}}"), // 'cssEase'
-                // customPaging
+{{ __SELF__.property('customPaging') == blank ? '//' : '' }}                customPaging:       {{__SELF__.property('customPaging') | raw}} ,
                 dots:               Boolean( {{ __SELF__.property('dots') }} ) === true ,   // false
-                // dotsClass
+                dotsClass:          String("{{__SELF__.property('dotsClass')}}"),
                 draggable:          Boolean( {{ __SELF__.property('draggable') }} ) === true ,   // false,
                 fade:               Boolean( {{ __SELF__.property('fade') }} ) === true ,   // false
-                focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true ,   // false
+                focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true,   // false
                 easing:             String("{{__SELF__.property('easing')}}"), // 'linear'
                 edgeFriction:       parseFloat({{__SELF__.property('edgeFriction')}}),   // 0.15
                 infinite:           Boolean( {{ __SELF__.property('infinite') }} ) === true ,   // true
@@ -48,10 +58,12 @@
                 pauseOnFocus:       Boolean( {{ __SELF__.property('pauseOnFocus') }} ) === true ,   // true
                 pauseOnHover:       Boolean( {{ __SELF__.property('pauseOnHover') }} ) === true ,   // true
                 pauseOnDotsHover:   Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true ,   // false
-                // respondTo: 'window'
-                // responsive
+                respondTo:          String("{{__SELF__.property('respondTo')}}"), // 'window'
+            
+{{ __SELF__.property('responsive') == blank ? '//' : '' }}                responsive:         {{__SELF__.property('responsive') | raw}}, // json object containing breakpoints and settings 
+            
                 rows:               Number( {{ __SELF__.property('rows') }} ),   // 1
-                // slide
+                slide:              String("{{__SELF__.property('slide')}}"),     // element query to use as slide
                 slidesPerRow:       Number( {{ __SELF__.property('slidesPerRow') }} ),   // 1
                 slidesToShow:       Number( {{ __SELF__.property('slidesToShow') }} ),   // 1
                 slidesToScroll:     Number( {{ __SELF__.property('slidesToScroll') }} ),   // 1
@@ -66,11 +78,24 @@
                 vertical:           Boolean( {{ __SELF__.property('vertical') }} ) === true ,   // false
                 verticalSwiping:    Boolean( {{ __SELF__.property('verticalSwiping') }} ) === true ,   // false
                 rtl:                Boolean( {{ __SELF__.property('rtl') }} ) === true ,   // false
-                waitForAnimate:     Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true ,   // true
-                // zIndex: 1000
+                waitForAnimate:     Boolean( {{ __SELF__.property('waitForAnimate') }} ) === true ,   // true
+                zIndex:             Number( {{ __SELF__.property('zIndex') }}), // 1000
             };
+            
 
             $('#jlslideshow{{__SELF__.slideshow.id}}').slick(slickSettings);
+            if (Boolean( {{ __SELF__.property('autoplayVideos') }} ) === true)
+                // stop all videos on slide change, and start video on active slide if there is one
+                // FIXME: seems to interfere with the normal slideshow autoplay somehow: why?
+
+                $('#jlslideshow{{__SELF__.slideshow.id}}').on('init afterChange', function(event, slick, currentSlide, nextSlide) {
+
+                    //window.alert("blubub");
+                    console.log("why?");
+                    $('#jlslideshow{{__SELF__.slideshow.id}} .slick-slide').find('video').get(0).pause();
+                    $('#jlslideshow{{__SELF__.slideshow.id}} .slick-active').find('video').get(0).play();
+                    return true;
+                });
         </script>
     {% endput %}
 

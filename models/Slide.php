@@ -43,7 +43,10 @@ class Slide extends Model
     ];
 
     public $attachOne = [
-        'image' => ['System\Models\File']
+        'image' => ['System\Models\File'],
+        'mp4' => ['System\Models\File'],
+        'ogg' => ['System\Models\File'],
+        'webm' => ['System\Models\File']
     ];
 
     /**

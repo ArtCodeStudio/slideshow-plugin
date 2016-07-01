@@ -48,9 +48,19 @@ class Slideshow extends ComponentBase
             'captionPosition' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.description',
-                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.captionPosition.placeholder'),
-                'type' => 'string',
+                'type' => 'dropdown',
+                'options' => ['top left', 'top center', 'top right',
+                            'middle left', 'middle center', 'middle right',
+                            'bottom left', 'bottom center', 'bottom right'],
                 'default' => 'middle center',
+            ],
+
+            'autoplayVideos' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.description',
+                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.placeholder'),
+                'type' => 'checkbox',
+                'default' => true,
             ],
             
             'accessibility' => [
@@ -99,23 +109,23 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.asNavFor.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.asNavFor.placeholder'),
                 'type' => 'string',
-                'default' => 'null',
+                'default' => '',
             ],
 
             'appendArrows' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.appendArrows.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.appendArrows.description',
-                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.appendArrows.placeholder'),
+                'placeholder' => '$(element)',
                 'type' => 'string',
-                'default' => '$(element)',
+                'default' => '',
             ],
                        
             'appendDots' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.appendDots.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.appendDots.description',
-                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.appendDots.placeholder'),
+                'placeholder' => '$(element)',
                 'type' => 'string',
-                'default' => '$(element)',
+                'default' => '',
             ],
                                    
             'prevArrow' => [
@@ -163,7 +173,7 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.customPaging.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.customPaging.placeholder'),
                 'type' => 'string', // function
-                'default' => 'n/a',
+                'default' => '',
             ],
 
             'dots' => [
@@ -283,7 +293,8 @@ class Slideshow extends ComponentBase
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.respondTo.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.respondTo.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.respondTo.placeholder'),
-                'type' => 'string',
+                'type' => 'dropdown',
+                'options' => ['window' => 'window', 'slider' => 'slider', 'min' => 'min'],
                 'default' => 'window',
             ],
 
@@ -292,7 +303,7 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.responsive.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.responsive.placeholder'),
                 'type' => 'string', // object
-                'default' => 'none',
+                'default' => '',
             ],
                        
             'rows' => [

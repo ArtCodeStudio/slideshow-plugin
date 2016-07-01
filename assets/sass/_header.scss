@@ -1,0 +1,112 @@
+// top icon to draw attention to other content
+.top-icon-circle {
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    line-height: 58px;
+    margin: 0 auto 20px;
+    top: -70px;
+    position: relative;
+    // background-color: rgba(0,0,0,0.4);
+    .fa {
+        color: white;
+        font-size: 30px;
+    }
+}
+
+
+// subtext with fading animation in header
+.jumplink-subtext {
+    font-weight: 300;
+    animation-duration: 3s;
+    opacity: 0;
+    &.animationDone {
+        opacity: 1;
+    }
+}
+
+#particles-subtext-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    .container {
+        vertical-align: middle;
+    }
+}
+
+#particles {
+    .particles-js-canvas-el {
+        transition: opacity 1s ease-in-out;
+        opacity: 0.99;
+    }
+    height: 100vh;
+    &[data-target] {
+        margin-top: 0;
+    }
+}
+
+#blog-header {
+    position: relative;
+    #dust {
+        width: 100%;
+    }
+}
+
+#top-header-subtext-container {
+    position: absolute;
+    top: 6vw;
+    width: 100%;
+    .col-xs-4 {
+        // padding: 0;
+        &.left {
+            @include media-breakpoint-down(xs) {
+                padding-right: 0;
+            }
+        }
+        &.middle {
+
+        }
+        &.right {
+            @include media-breakpoint-down(xs) {
+                padding-left: 0;
+            }
+        }
+    } 
+    .jumplink-subtext {
+        font-weight: 300; 
+        font-size: 2.5vw;
+        opacity: 0;
+        @include media-breakpoint-up(xl) {
+            font-size: 2vw;
+        }
+        @extend .p-y-3;
+        // textillate sentence
+        > span {
+            // textillate word
+            > span {
+                // textillate char
+                > span {
+                    transition: transform 100ms;
+                    &:hover {
+                        -webkit-transform: scale3d(1.5, 1.5, 1.5);
+                        transform: scale3d(1.5, 1.5, 1.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#header_svg {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    @extend .p-y-2;
+}

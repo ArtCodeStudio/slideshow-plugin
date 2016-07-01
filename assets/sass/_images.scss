@@ -1,0 +1,38 @@
+.img-hover-wrapper {
+    position: relative;
+    width: 100%;
+    img {
+        width: 100%;
+        &:first-child {
+
+        }
+        &:nth-child(2) {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            &:hover, &:active, &:focus {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.img-cover {
+  background-repeat: no-repeat; 
+  background-position: center center;
+  background-size: cover;
+}
+
+.network_media {
+    .media-object {
+        max-width: 300px;
+    }
+}
+
+.network_person {
+    img {
+        max-width: 250px;
+    }
+}
