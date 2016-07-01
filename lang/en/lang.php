@@ -31,10 +31,34 @@
                 ],
 
 
-                'inject_css' => [
-                    'title' => 'injectCSS',
-                    'description' => 'whether css should be injected by the component',
+                'injectSlickAssets' => [
+                    'title' => 'injectSlickAssets',
+                    'description' => 'Injects the slick CSS and JavaScript into the page. This should be only done once per page. So only check it once in case of multiple slideshows, and also uncheck it if you want to include these in the page or layout by yourself.',
                     'placeholder' => 'true',
+                ],
+
+                'injectSlickTheme' => [
+                    'title' => 'injectSlickTheme',
+                    'description' => 'Injects the optional slick theme CSS into the page, for slick\'s standard slideshow styling. This should be only done once per page. So only check it once in case of multiple slideshows, and also uncheck it if you want to include these in the page or layout by yourself.',
+                    'placeholder' => 'false',
+                ],
+
+                'injectJQuery' => [
+                    'title' => 'injectJQuery',
+                    'description' => 'Injects JQuery and JQuery Migrate vendor scripts into the page. In most cases it is probably the better practice to include these in your page or layout by yourself.',
+                    'placeholder' => 'false',
+                ],
+
+                'injectJLSlideshowCSS' => [
+                    'title' => 'injectJLSlideshowCSS',
+                    'description' => 'Injects injectJLSlideshowCSS',
+                    'placeholder' => 'true',
+                ],
+
+
+                'aspectRatio' => [
+                    'title' => 'Aspect Ratio',
+                    'description' => 'choose aspect ratio for the slides'
                 ],
 
                 'captionPosition' => [
@@ -42,11 +66,16 @@
                     'description' => 'specify css classes for caption positioning: top, middle, bottom | left, center, right',
                 ],
 
-                'autoplayVideos' => [
-                    'title' => 'autoplayVideos',
-                    'description' => 'autoplay videos if there are any in the slideshow',
+                'autoplayOnShow' => [
+                    'title' => 'autoplayOnShow',
+                    'description' => 'autoplay embedded videos on slide activation',
                 ],
-                
+
+                'nextSlideOnEnd' => [
+                    'title' => 'nextSlideOnEnd',
+                    'description' => 'move to the next slide when video ends',
+                ],
+
                 'accessibility' => [
                     'title' => 'accessibility',
                     'description' => 'Enables tabbing and arrow key navigation',

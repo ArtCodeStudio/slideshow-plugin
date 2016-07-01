@@ -31,6 +31,37 @@
   padding-top: 125%;
 }
 
+// Font Awesome Variables
+// --------------------------
+@import "../vendor/font-awesome/scss/variables";
+$fa-font-path:        '../vendor/font-awesome/fonts'; // $font-path; //"../fonts" !default; //  $font-path
+//$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts" !default; // for referencing Bootstrap CDN font files directly
+$fa-font-size-base:   14px !default;
+$fa-line-height-base: 1 !default;
+$fa-css-prefix:       fa !default;
+$fa-version:          "4.5.0" !default;
+$fa-border-color:     #eee !default;
+$fa-inverse:          #fff !default;
+$fa-li-width:         (30em / 14) !default;
+// Slick Variables
+// @see https://github.com/kenwheeler/slick/
+$slick-font-path:  $font-path;
+$slick-font-family: "FontAwesome";
+$slick-loader-path: "./" !default;
+$slick-arrow-color: $brand-primary;
+$slick-dot-color: $brand-primary;
+$slick-dot-color-active: $brand-primary;
+$slick-prev-character: $fa-var-chevron-left; // "←" !default;
+$slick-next-character: $fa-var-chevron-right; // "→" !default;
+$slick-dot-character: $fa-var-circle-o; // $fa-var-circle-thin;
+$slick-active-dot-character: $fa-var-circle; // "•" !default;
+$slick-dot-size: $fa-font-size-base;
+$slick-opacity-default: 1;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 1;
+$slick-arrow-opacity-on-hover: 1;
+$slick-arrow-opacity-disabled: 0.4;
+
 /**
  * Custom carousel styles
  */
@@ -81,3 +112,5 @@
     }
   }
 }
+
+

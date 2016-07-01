@@ -37,12 +37,41 @@ class Slideshow extends ComponentBase
                 'validationPattern' => '^[0-9]+$',
                 'default'           => '5',
             ],
-            'injectCSS' => [
-                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.inject_css.title',
-                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.inject_css.description',
-                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.inject_css.placeholder'),
+            'injectSlickAssets' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.description',
+                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.placeholder'),
                 'type'              => 'checkbox',
                 'default'           => true,
+            ],
+            'injectSlickTheme' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickTheme.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickTheme.description',
+                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.injectSlickTheme.placeholder'),
+                'type'              => 'checkbox',
+                'default'           => true,
+            ],
+            'injectJLSlideshowCSS' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectJLSlideshowCSS.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectJLSlideshowCSS.description',
+                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.injectJLSlideshowCSS.placeholder'),
+                'type'              => 'checkbox',
+                'default'           => true,
+            ],
+            'injectJQuery' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectJQuery.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectJQuery.description',
+                'placeholder'       => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.injectJQuery.placeholder'),
+                'type'              => 'checkbox',
+                'default'           => false,
+            ],
+
+            'aspectRatio' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.description',
+                'type' => 'dropdown',
+                'options' => ['ratio-1-1' => '1:1', 'ratio-2-1' => '2:1', 'ratio-1-2' => '1:2', 'ratio-4-3' => '4:3', 'ratio-16-9' => '16:9', 'ratio-3-4' => '3:4'],
+                'default' => 'ratio-1-1',
             ],
 
             'captionPosition' => [
@@ -55,10 +84,18 @@ class Slideshow extends ComponentBase
                 'default' => 'middle center',
             ],
 
-            'autoplayVideos' => [
-                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.title',
-                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.description',
-                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayVideos.placeholder'),
+            'autoplayOnShow' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.description',
+                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.placeholder'),
+                'type' => 'checkbox',
+                'default' => true,
+            ],
+
+            'nextSlideOnEnd' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.description',
+                'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.placeholder'),
                 'type' => 'checkbox',
                 'default' => true,
             ],
@@ -482,16 +519,27 @@ class Slideshow extends ComponentBase
 
         $this->slideshow = $slideshowQueryBuilder->firstOrFail();
 
-        $injectCSS = (boolean) $this->property('injectCSS');
-        if ($injectCSS)
+        if ($this->property('injectSlickAssets'))
         {
             $this->addCss('assets/vendor/slick-carousel/slick/slick.css');
-            $this->addCss('assets/vendor/slick-carousel/slick/slick-theme.css');
-            $this->addCss('assets/css/backgroundbox.css');
+            $this->addJs('assets/vendor/slick-carousel/slick/slick.min.js');
         }
 
-        $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
-        $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
-        $this->addJs('assets/vendor/slick-carousel/slick/slick.min.js');
+        if ($this->property('injectSlickTheme'))
+        {
+            $this->addCss('assets/vendor/slick-carousel/slick/slick-theme.css');            
+        }
+
+        if ($this->property('injectJQuery'))
+        {
+            $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
+            $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
+        }
+
+        if ($this->property('injectJLSlideshowCSS'))
+        {
+            $this->addCss('assets/css/slideshow.css');         
+
+        }
     }
 }
