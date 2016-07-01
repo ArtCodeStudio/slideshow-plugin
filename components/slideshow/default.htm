@@ -7,7 +7,7 @@
 
             {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
             <div style="width:100%;height: 360px; position: absolute; top: 0; left: 0;">
-                            <video preload autoplay loop muted width="100%">
+                            <video preload autoplay loop muted width="100%" poster="{{ slide.image.path }}">
                             {% if slide.mp4 != blank %}
                                 <source src="{{slide.mp4.path}}" type="video/mp4">
                             {% endif %}
