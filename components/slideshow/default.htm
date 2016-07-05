@@ -1,12 +1,12 @@
 {% if __SELF__.slideshow.slides %}
-    <div id='jlslideshow{{__SELF__.slideshow.id}}' class="jlslideshow">
+    <div id='{{__SELF__.alias}}' class="slick-slider">
 
     {% for i, slide in __SELF__.slideshow.slides %}
-        <div>
+        <div class="slick-slide">
           <a href="{{ slide.link }}">  <!-- slide.href -->
 
             {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
-            <div style="width:100%;height: 360px; position: absolute; top: 0; left: 0;">
+            <div class ="carousel-video" style="width:100%;height: 360px; position: absolute; top: 0; left: 0;">
                             <video preload autoplay loop muted width="100%" poster="{{ slide.image.path }}">
                             {% if slide.mp4 != blank %}
                                 <source src="{{slide.mp4.path}}" type="video/mp4">
@@ -18,14 +18,14 @@
                                 <source src="{{slide.webm.path}}" type="video/webm">
                             {% endif %}
                             </video>
-            {% else %}
-            <div class="background-box {{__SELF__.property('aspectRatio')}}" style="background-image: url({{ slide.image.path }});">
+            </div>
             {% endif %}
-            {% if slide.title != blank or slide.description != blank %} <!-- slide.text -->
-              <div class="carousel-caption col-xs-12 col-sm-6 col-md-4 col-lg-4 {{__SELF__.property('captionPosition')}}"> <!--   slide.position  -->
+            <div class="background-box {{__SELF__.property('aspectRatio')}}" style="background-image: url({{ slide.image.path }});">
+            {% if slide.title != blank or slide.description != blank %}
+              <div class="carousel-caption {{__SELF__.property('captionPosition')}}">
                 <div class="carousel-caption-wrapper m-x-2 m-y-2">
                   <h2>{{ slide.title | raw }}</h2>
-                  {{ slide.description | raw }} <!-- slide.text -->
+                  {{ slide.description | raw }}
                 </div>
               </div>
             {% endif %}
@@ -91,7 +91,7 @@
             };
             
 
-            $('#jlslideshow{{__SELF__.slideshow.id}}').slick(slickSettings);
+            $('#{{__SELF__.alias}}').slick(slickSettings);
     /*        if (Boolean( {{ __SELF__.property('autoplayVideos') }} ) === true)
                 // stop all videos on slide change, and start video on active slide if there is one
                 // FIXME: seems to interfere with the normal slideshow autoplay somehow: why?

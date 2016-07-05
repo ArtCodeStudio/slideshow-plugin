@@ -127,13 +127,13 @@
                 'prevArrow' => [
                     'title' => 'prevArrow',
                     'description' => 'Allows you to select a node or customize the HTML for the "Previous" arrow.',
-                    'placeholder' => '&lt;button type="button" class="slick-prev">Previous&lt;/button&gt;',
+                    'placeholder' => '<button type="button" class="slick-prev">Previous</button>',
                 ],
                                        
                 'nextArrow' => [
                     'title' => 'nextArrow',
                     'description' => 'Allows you to select a node or customize the HTML for the "Next" arrow.',
-                    'placeholder' => '&lt;button type="button" class="slick-next">Next&lt;/button&gt;',
+                    'placeholder' => '<button type="button" class="slick-next">Next</button>',
                 ],
 
                 'centerMode' => [

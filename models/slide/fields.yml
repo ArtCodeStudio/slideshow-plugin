@@ -38,7 +38,7 @@ fields:
         label: jumplink.slideshow::lang.fields.slide.ogg
         type: fileupload
         mode: file
-        fileTypes: ogg
+        fileTypes: ogg,ogv
     webm:
         label: jumplink.slideshow::lang.fields.slide.webm
         type: fileupload
