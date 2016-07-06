@@ -78,9 +78,9 @@ class Slideshow extends ComponentBase
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.description',
                 'type' => 'dropdown',
-                'options' => ['top left', 'top center', 'top right',
-                            'middle left', 'middle center', 'middle right',
-                            'bottom left', 'bottom center', 'bottom right'],
+                'options' => ['top left' => 'top left', 'top center' => 'top center', 'top right' => 'top right',
+                            'middle left' => 'middle left', 'middle center' => 'middle center', 'middle right' => 'middle right',
+                            'bottom left' => 'bottom left', 'bottom center' => 'bottom center', 'bottom right' => 'bottom right'],
                 'default' => 'middle center',
             ],
 
@@ -93,8 +93,8 @@ class Slideshow extends ComponentBase
             ],
 
             'nextSlideOnEnd' => [
-                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.title',
-                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.description',
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.nextSlideOnEnd.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.nextSlideOnEnd.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.placeholder'),
                 'type' => 'checkbox',
                 'default' => true,
