@@ -15,3 +15,8 @@
 1.0.6:
     - 'Add persian translation (thanks to @cracki)'
     - 'Add french translation'
+2.0.0:
+    - 'forked from Flosch; changed namespace to JumpLink'
+    - 'created bower package to include slick carousel vendor assets'
+    - 'changed default template to use slick carousel and added configuration options for slick in the slideshow component'
+    - 'added video file attachments to slides, and options for video autoplay in the slideshow'
