@@ -18,7 +18,7 @@ Parameter | Description
 **numberOfSlide** | number of slides to show, optional.
 
 In order to display this component, all you have to do is call it within a page, providing it's given ID (which can be found in the back-office list of slideshows) :
-
+```twig
     url='/test-page-with-slideshow'
 
     [slideshow]
@@ -27,6 +27,7 @@ In order to display this component, all you have to do is call it within a page,
     ==
 
     {% component 'slideshow' %}
+```
 
 ### Customized template
 
@@ -34,6 +35,7 @@ If you want to customize the way the slideshow is displayed, you can create a cu
 
 Here is the default DOM structure of the slideshow component, which implements the slick carousel DOM structure, with some additional CSS styling that has yet to be cleanly included, or maybe better left out. There will be some additional parameters in addition to the title, description and link attributes soon, to allow more comprehensive customization of all the slick carousel attributes (see commented out code below).
 
+```twig
     {% if __SELF__.slideshow.slides %}
         <div id='__SELF__.slideshow.id' class="header-photo-carousel ah-carousel">
     
@@ -111,3 +113,4 @@ Here is the default DOM structure of the slideshow component, which implements t
             </script>
         {% endput %}
     {% endif %}
+```
