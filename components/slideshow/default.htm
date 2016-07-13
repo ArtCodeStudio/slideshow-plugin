@@ -18,7 +18,6 @@
                     </div>
                 {% else %}
                     <div class="carousel-image-wrapper">
-                        <div class="background-box {{__SELF__.property('aspectRatio')}}" style="background-image: url({{ slide.image.path }});"></div>
                         <img class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}">
                     </div>
                 {% endif %}
