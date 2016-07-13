@@ -1,66 +1,46 @@
-/*
- * ASPECT RATIO for background images
- * 
- * @authors Marc Hinse, Pascal Garber
- * @see: http://www.jumplink.eu/blog/post/onlineshop-immer-einheitlich-grosse-produktbilder
- * @see: http://www.mademyday.de/css-height-equals-width-with-pure-css.html
- */
-.background-box {
-  background-size: cover;
-  background-position: center center;
 
-  width: 100%;
-  padding-top: 100%; /* Default 1-1 aspect ratio */
-}
-.background-box.ratio-1-1 {
-  padding-top: 100%;
-}
-.background-box.ratio-2-1 {
-  padding-top: 50%;
-}
-.background-box.ratio-1-2 {
-  padding-top: 200%;
-}
-.background-box.ratio-4-3 {
-  padding-top: 75%;
-}
-.background-box.ratio-16-9 {
-  padding-top: 56.25%;
-}
-.background-box.ratio-3-4 {
-  padding-top: 125%;
+.carousel-caption-wrapper {
+    position: absolute;
+    display: flex;
 }
 
-.carousel-caption {
-  display: flex;
+.carousel-caption-wrapper.top {
+    position: absolute;
+    top: 0;
+    padding-top: 0;
 }
-.carousel-caption.top {
-  top: 0;
-  padding-top: 0;
+
+.carousel-caption-wrapper.middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 0;
+    top: 0;
 }
-.carousel-caption.middle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  bottom: 0;
-  top: 0;
-  height: 100%;
+
+.carousel-caption-wrapper.bottom {
+    bottom: 0;
+    padding-bottom: 0;
 }
-.carousel-caption.bottom {
-  bottom: 0;
-  padding-bottom: 0;
+
+.carousel-caption-wrapper.left {
+    left: 0;
+    right: inherit;
 }
-.carousel-caption.left {
-  left: 0;
-  right: inherit;
+
+.carousel-caption-wrapper.center {
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
 }
-.carousel-caption.center {
-  left: 0;
-  right: 0;
-  text-align: center;
-  margin: auto;
+
+.carousel-caption-wrapper.center {
+    left: inherit;
+    right: 0;
 }
-.carousel-caption.right {
-  left: inherit;
-  right: 0;
+
+.carousel-caption-wrapper.carousel-caption-content {
+    width: 25%; /*todo*/
 }
+
