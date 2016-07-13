@@ -1,0 +1,25 @@
+{
+  "name": "jumplink-slideshow",
+  "version": "0.0.0",
+  "description": "Slideshow plugin for OctoberCMS, based on Flosch Slideshow",
+  "main": "",
+  "scripts": {
+    "preinstall": "bower install",
+    "postinstall": "npm run build",
+    "sass": "node_modules/.bin/node-sass assets/scss/slideshow.scss assets/css/slideshow.css",
+    "autoprefixer": "node_modules/.bin/postcss --use autoprefixer assets/css/slideshow.css -d assets/css/",
+    "build": "npm run sass && npm run autoprefixer",
+    "watch": "npm run sass -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JumpLinkNetwork/slideshow-plugin.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^6.3.7",
+    "node-sass": "^3.8.0",
+    "postcss-cli": "^2.5.2"
+  }
+}

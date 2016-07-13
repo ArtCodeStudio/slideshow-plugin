@@ -1,8 +1,6 @@
-// text positions
-.slick-slide {
-    position: relative;
-}
+@import 'variables';
 
+// text positions
 .carousel-caption-wrapper {
     position: absolute;
     display: flex;
@@ -19,10 +17,10 @@
         width: 100%;
         flex-direction: row;
         justify-content: center;
-	img {
-	    margin-left: auto;
+        img {
+            margin-left: auto;
             margin-right: auto;
-	}
+        }
     }
     
     &.middle {
@@ -51,5 +49,64 @@
     
     .carousel-caption-content {
         padding: 15px;
+    }
+}
+
+// needed for textposition
+.slick-list {
+    .slick-slide {
+        position: relative;
+    }
+}
+
+// additional styles for dots
+.slick-dots {
+    li {
+        button {
+            &:before {
+                content: $slick-dot-character;
+            }
+            &:hover {
+                &:before {
+                    content: $slick-active-dot-character;
+                }
+            }
+        }
+        &.slick-active {
+            button {
+                &:before {
+                    content: $slick-active-dot-character;
+                }
+            }
+        }
+    }
+}
+
+// for vertical dots
+.slick-dots-vertical {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 50px;
+    li {
+        button {
+        }
+        &.slick-active {
+            button {
+            }
+        }
+    }
+}
+
+// additional style for prev and next
+.slick-prev,
+.slick-next {
+    &:hover, &:focus {
+        &:before {
+            opacity: $slick-arrow-opacity-on-hover;
+        }
+    }
+    &.slick-disabled:before {
+        opacity: $slick-arrow-opacity-disabled;
     }
 }
