@@ -3,7 +3,7 @@
         {% for i, slide in __SELF__.slideshow.slides %}
             <a href="{{ slide.link }}" id="{{__SELF__.alias}}-slide-{{loop.index}}" class="slick-slide">
                 {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
-                    <div class ="carousel-video">
+                    <div class ="carousel-video-wrapper">
                         <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                             {% if slide.mp4 != blank %}
                                 <source src="{{slide.mp4.path}}" type="video/mp4">
@@ -17,15 +17,16 @@
                         </video>
                     </div>
                 {% else %}
-                    <div class="carousel-image">
+                    <div class="carousel-image-wrapper">
                         <div class="background-box {{__SELF__.property('aspectRatio')}}" style="background-image: url({{ slide.image.path }});"></div>
+                        <img class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}">
                     </div>
                 {% endif %}
-                {% if slide.title != blank or slide.description != blank %}
-                    <div class="carousel-caption {{__SELF__.property('captionPosition')}}">
-                        <div class="carousel-caption-wrapper m-x-2 m-y-2">
+                {% if slide.title != blank or slide.description != blank  %}
+                    <div class="carousel-caption-wrapper {{__SELF__.property('captionPosition')}}">
+                        <div class="carousel-caption-content">
                             <h2>{{ slide.title | raw }}</h2>
-                            {{ slide.description | raw }}
+                            <p>{{ slide.description | raw }}</p>
                         </div>
                     </div>
                 {% endif %}
