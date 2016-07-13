@@ -1,3 +1,6 @@
+.slick-slide {
+    position: relative;
+}
 
 .carousel-caption-wrapper {
     position: absolute;
@@ -5,9 +8,18 @@
 }
 
 .carousel-caption-wrapper.top {
-    position: absolute;
     top: 0;
     padding-top: 0;
+}
+
+.carousel-caption-wrapper.center {
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .carousel-caption-wrapper.middle {
@@ -16,6 +28,7 @@
     justify-content: center;
     bottom: 0;
     top: 0;
+    height: 100%;
 }
 
 .carousel-caption-wrapper.bottom {
@@ -28,19 +41,12 @@
     right: inherit;
 }
 
-.carousel-caption-wrapper.center {
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin: auto;
-}
-
-.carousel-caption-wrapper.center {
+.carousel-caption-wrapper.right {
     left: inherit;
     right: 0;
 }
 
-.carousel-caption-wrapper.carousel-caption-content {
-    width: 25%; /*todo*/
+.carousel-caption-wrapper .carousel-caption-content {
+    padding: 15px;
 }
 
