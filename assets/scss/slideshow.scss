@@ -1,0 +1,51 @@
+// text positions
+.slick-slide {
+    position: relative;
+}
+
+.carousel-caption-wrapper {
+    position: absolute;
+    display: flex;
+    .carousel-caption-wrapper.top {
+        top: 0;
+        padding-top: 0;
+    }
+    
+    &.center {
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    &.middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        bottom: 0;
+        top: 0;
+        height: 100%;
+    }
+    
+    &.bottom {
+        bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    &.left {
+        left: 0;
+        right: inherit;
+    }
+    
+    &.right {
+        left: inherit;
+        right: 0;
+    }
+    
+    .carousel-caption-content {
+        padding: 15px;
+    }
+}
