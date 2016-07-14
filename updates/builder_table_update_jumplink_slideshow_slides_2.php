@@ -3,7 +3,7 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateJumplinkSlideshowSlides extends Migration
+class BuilderTableUpdateJumplinkSlideshowSlides2 extends Migration
 {
     public function up()
     {
