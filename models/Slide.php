@@ -61,4 +61,32 @@ class Slide extends Model
     {
         return $query->where('is_published', true);
     }
+
+    public function getAspectRatioOptions()
+    {
+        return ["" => "auto",
+                "ratio-1-1" => "1:1",
+                "ratio-2-1" => "2:1",
+                "ratio-1-2" => "1:2",
+                "ratio-4-3" => "4:3",
+                "ratio-16-9" => "16:9",
+                "ratio-3-4" => "3:4",
+                "custom" => "custom"
+        ];
+    }
+
+    public function getCaptionPositionOptions()
+    {
+        return ["" =>  "set by slideshow", //Vorgabe übernehmen",
+                "top left" => "top left",  //"oben links",
+                "top center" => "top center", //"oben mittig",
+                "top right" => "top right", //"oben rechts",
+                "middle left" => "middle left", //mittig links",
+                "middle center" => "middle center", //mittig mittig",
+                "middle right" => "middle right", //mittig rechts",
+                "bottom left" => "bottom left", //unten links",
+                "bottom center" => "bottom center", //unten mittig",
+                "bottom right" => "bottom right", //unten rechts",
+        ];
+    }
 }

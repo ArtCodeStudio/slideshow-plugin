@@ -17,12 +17,20 @@
                         </video>
                     </div>
                 {% else %}
-                    <div class="carousel-image-wrapper">
+                    {% if slide.aspect_ratio == 'custom' %}
+                    <div class="carousel-image-wrapper" style="padding-top: {{ 100.0 / slide.custom_ratio}}%">
+                    {% elseif slide.aspect_ratio != blank %}
+                    <div class="carousel-image-wrapper {{slide.aspect_ratio}}">
+                    {% elseif __SELF__.property('aspect_ratio') == 'custom' %}
+                    <div class="carousel-image-wrapper" style="padding-top: {{ 100.0 / __SELF__.property('custom_ratio') }}%">
+                    {% else %}
+                    <div class="carousel-image-wrapper {{__SELF__.property('aspect_ratio')}}">
+                    {% endif %}
                         <img class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}">
                     </div>
                 {% endif %}
                 {% if slide.title != blank or slide.description != blank  %}
-                    <div class="carousel-caption-wrapper {{__SELF__.property('captionPosition')}}">
+                    <div class="carousel-caption-wrapper {{slide.captionPosition != 'auto' ? slide.captionPosition : __SELF__.property('captionPosition')">
                         <div class="carousel-caption-content">
                             <h2>{{ slide.title | raw }}</h2>
                             <p>{{ slide.description | raw }}</p>
@@ -118,7 +126,7 @@
                     theVideo.play();
                 }
             });
-            {{ __SELF__.property('autoplayOnShow') == 1 ? '' : '*/'}}
+            {{ __SELF__.property('autoplayOnShow') == 1 ? '' : '*/' }}
 
         </script>
     {% endput %}

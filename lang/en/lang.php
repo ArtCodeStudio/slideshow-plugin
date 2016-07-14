@@ -425,6 +425,9 @@
             'unpublished_at' => 'Finish publishing',
             'published_at' => 'Start publishing',
             'is_published' => 'Published?',
+            'aspect_ratio' => 'aspect ratio of slide ("auto" will take the value from the Slideshow component property, if set)',
+            'custom_ratio' => 'custom value for aspect ratio, if "custom" selected (width / height => decimal value)',
+            'caption_position' => 'caption position'
         ],
     ],
 ];

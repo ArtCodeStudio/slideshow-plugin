@@ -58,8 +58,15 @@ class Slideshow extends ComponentBase
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.description',
                 'type' => 'dropdown',
-                'options' => ['ratio-1-1' => '1:1', 'ratio-2-1' => '2:1', 'ratio-1-2' => '1:2', 'ratio-4-3' => '4:3', 'ratio-16-9' => '16:9', 'ratio-3-4' => '3:4'],
-                'default' => 'ratio-1-1',
+                'options' => ['' => 'auto', 'ratio-1-1' => '1:1', 'ratio-2-1' => '2:1', 'ratio-1-2' => '1:2', 'ratio-4-3' => '4:3', 'ratio-16-9' => '16:9', 'ratio-3-4' => '3:4', 'custom' => 'custom'],
+                'default' => '',
+            ],
+
+            'customRatio' => [
+                'title' => 'jumplink.slideshow::lang.components.slideshow.properties.customRatio.title',
+                'description' => 'jumplink.slideshow::lang.components.slideshow.properties.customRatio.description',
+                'type' => 'string',
+                'default' => ''
             ],
 
             'captionPosition' => [

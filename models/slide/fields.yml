@@ -36,4 +36,13 @@ fields:
         type: fileupload
         mode: file
         fileTypes: webm
+    aspect_ratio:
+        label: jumplink.slideshow::lang.fields.slide.aspect_ratio
+        type: dropdown
+    custom_ratio:
+        label: jumplink.slideshow::lang.fields.slide.custom_ratio
+        type: number
+    caption_position:
+        label: jumplink.slideshow::lang.fields.slide.caption_position
+        type: dropdown
 

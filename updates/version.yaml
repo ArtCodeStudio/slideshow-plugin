@@ -23,3 +23,6 @@
 2.0.1:
     - 'Updated table jumplink_slideshow_slides'
     - builder_table_update_jumplink_slideshow_slides_2.php
+2.0.2:
+    - 'Updated table jumplink_slideshow_slides'
+    - builder_table_update_jumplink_slideshow_slides_3.php
