@@ -29,16 +29,6 @@ class Slideshow extends ComponentBase
                 'placeholder'   => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.id.placeholder'),
                 'type'          => 'dropdown'
             ],
-
-            // TODO: I think this option is useless and should be removed
-            'numberOfSlide' => [
-                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.number_of_slide.title',
-                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.number_of_slide.description',
-                'placeholder'       => '666',
-                'type'              => 'string',
-                'validationPattern' => '^[0-9]+$',
-                'default'           => '666',
-            ],
             'injectSlickAssets' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.description',
@@ -503,15 +493,10 @@ class Slideshow extends ComponentBase
     public function onRun()
     {
         $slideshowId = (int) $this->property('slideshow');
-        $numberOfSlide = (int) $this->property('numberOfSlide');
 
         $slideshowQueryBuilder = SlideshowModel::where('id', '=', $slideshowId)
-            ->with(['slides' => function ($query) use ($numberOfSlide) {
-                $query->published();
-
-                if ($numberOfSlide > 0) {
-                    $query->take($numberOfSlide);
-                }
+                ->with(['slides' => function ($query) {
+                    $query->published();
             }])
         ;
 

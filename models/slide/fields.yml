@@ -9,14 +9,6 @@ fields:
     link:
         label: jumplink.slideshow::lang.fields.slide.link
         span: right
-    unpublished_at:
-        label: jumplink.slideshow::lang.fields.slide.unpublished_at
-        span: right
-        type: datepicker
-    published_at:
-        label: jumplink.slideshow::lang.fields.slide.published_at
-        span: left
-        type: datepicker
     is_published:
         label: jumplink.slideshow::lang.fields.slide.is_published
         span: left

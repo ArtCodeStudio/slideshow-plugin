@@ -20,3 +20,6 @@
     - 'created bower package to include slick carousel vendor assets'
     - 'changed default template to use slick carousel and added configuration options for slick in the slideshow component'
     - 'added video file attachments to slides, and options for video autoplay in the slideshow'
+2.0.1:
+    - 'Updated table jumplink_slideshow_slides'
+    - builder_table_update_jumplink_slideshow_slides.php
