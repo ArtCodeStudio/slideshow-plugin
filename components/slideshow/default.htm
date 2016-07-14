@@ -30,7 +30,7 @@
                     </div>
                 {% endif %}
                 {% if slide.title != blank or slide.description != blank  %}
-                    <div class="carousel-caption-wrapper {{slide.captionPosition != 'auto' ? slide.captionPosition : __SELF__.property('captionPosition')">
+                    <div class="carousel-caption-wrapper {{slide.captionPosition != 'auto' ? slide.captionPosition : __SELF__.property('captionPosition')}}">
                         <div class="carousel-caption-content">
                             <h2>{{ slide.title | raw }}</h2>
                             <p>{{ slide.description | raw }}</p>
