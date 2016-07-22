@@ -3,19 +3,23 @@
         {% for i, slide in __SELF__.slideshow.slides %}
             <a href="{{ slide.link }}" id="{{__SELF__.alias}}-slide-{{loop.index}}" class="slick-slide">
                 {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
-                    <div class ="carousel-video-wrapper">
-                        <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
-                            {% if slide.mp4 != blank %}
-                                <source src="{{slide.mp4.path}}" type="video/mp4">
-                            {% endif %}
-                            {% if slide.ogg != blank %}
-                                <source src="{{slide.ogg.path}}" type="video/ogg">
-                            {% endif %}
-                            {% if slide.webm != blank %}
-                                <source src="{{slide.webm.path}}" type="video/webm">
-                            {% endif %}
-                        </video>
-                    </div>
+                    {% if slide.aspect_ratio == 'custom' %}
+                        <!-- TODO Moritz -->
+                    {% elseif slide.aspect_ratio != blank %}
+                        <div class ="carousel-video-wrapper {{slide.aspect_ratio}}">
+                            <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                {% if slide.mp4 != blank %}
+                                    <source src="{{slide.mp4.path}}" type="video/mp4">
+                                {% endif %}
+                                {% if slide.ogg != blank %}
+                                    <source src="{{slide.ogg.path}}" type="video/ogg">
+                                {% endif %}
+                                {% if slide.webm != blank %}
+                                    <source src="{{slide.webm.path}}" type="video/webm">
+                                {% endif %}
+                            </video>
+                        </div>
+                     {% endif %}
                 {% else %}
                     {% if slide.aspect_ratio == 'custom' %}
                     <div class="carousel-image-wrapper" style="padding-top: {{ 100.0 / slide.custom_ratio}}%">
