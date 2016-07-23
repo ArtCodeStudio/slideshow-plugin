@@ -34,24 +34,28 @@ class Slideshow extends ComponentBase
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.description',
                 'type'              => 'checkbox',
                 'default'           => 1,
+                'group'             => 'Asset Injection'
             ],
             'injectSlickTheme' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickTheme.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickTheme.description',
                 'type'              => 'checkbox',
                 'default'           => 1,
+                'group'             => 'Asset Injection'
             ],
             'injectJLSlideshowCSS' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectJLSlideshowCSS.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectJLSlideshowCSS.description',
                 'type'              => 'checkbox',
                 'default'           => 1,
+                'group'             => 'Asset Injection'
             ],
             'injectJQuery' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectJQuery.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectJQuery.description',
                 'type'              => 'checkbox',
                 'default'           => 0,
+                'group'             => 'Asset Injection'
             ],
 
             'aspectRatio' => [
@@ -60,13 +64,14 @@ class Slideshow extends ComponentBase
                 'type' => 'dropdown',
                 'options' => ['' => 'auto', 'ratio-1-1' => '1:1', 'ratio-2-1' => '2:1', 'ratio-1-2' => '1:2', 'ratio-4-3' => '4:3', 'ratio-16-9' => '16:9', 'ratio-3-4' => '3:4', 'custom' => 'custom'],
                 'default' => '',
+                'group' => 'Slide display'
             ],
 
             'customRatio' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.customRatio.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.customRatio.description',
                 'type' => 'string',
-                'default' => ''
+                'group' => 'Slide display'
             ],
 
             'captionPosition' => [
@@ -77,6 +82,7 @@ class Slideshow extends ComponentBase
                             'middle left' => 'middle left', 'middle center' => 'middle center', 'middle right' => 'middle right',
                             'bottom left' => 'bottom left', 'bottom center' => 'bottom center', 'bottom right' => 'bottom right'],
                 'default' => 'middle center',
+                'group' => 'Slide display'
             ],
 
             'autoplayOnShow' => [
@@ -85,6 +91,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow dynamics'
             ],
 
             'nextSlideOnEnd' => [
@@ -93,6 +100,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplayOnShow.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow dynamics'
             ],
             
             'accessibility' => [
@@ -101,6 +109,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.accessibility.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
                        
             'adaptiveHeight' => [
@@ -109,6 +118,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.adaptiveHeight.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slide display'
             ],
 
             'autoplay' => [
@@ -117,6 +127,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplay.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow dynamics'
             ],
 
             'autoplaySpeed' => [
@@ -125,7 +136,8 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.autoplaySpeed.placeholder'),
                 'type' => 'string', // milliseconds
                 'validationPattern' => '^[0-9]+$',
-                'default' => '' // '3000',
+                'default' => '', // '3000',
+                'group' => 'Slideshow dynamics'
             ],
 
             'arrows' => [
@@ -134,6 +146,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.arrows.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
                                     
             'asNavFor' => [
@@ -150,6 +163,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => '$(element)',
                 'type' => 'string',
                 'default' => '',
+                'group' => 'Slideshow control'
             ],
                        
             'appendDots' => [
@@ -158,6 +172,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => '$(element)',
                 'type' => 'string',
                 'default' => '',
+                'group' => 'Slideshow control'
             ],
                                    
             'prevArrow' => [
@@ -165,7 +180,8 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.prevArrow.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.prevArrow.placeholder'),
                 'type' => 'string', // (html|jQuery selector) | object (DOM node|jQuery object)',
-                'default' => '' // '<button type="button" class="slick-prev">Previous</button>',
+                'default' => '', // '<button type="button" class="slick-prev">Previous</button>',
+                'group' => 'Slideshow control'
             ],
                                    
             'nextArrow' => [
@@ -173,7 +189,8 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.nextArrow.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.nextArrow.placeholder'),
                 'type' => 'string', // (html|jQuery selector) | object (DOM node|jQuery object)',
-                'default' => '' // '<button type="button" class="slick-next">Next</button>',
+                'default' => '', // '<button type="button" class="slick-next">Next</button>',
+                'group' => 'Slideshow control'
             ],
 
             'centerMode' => [
@@ -182,6 +199,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.centerMode.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slide display'
             ],
 
             'centerPadding' => [
@@ -190,6 +208,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.centerPadding.placeholder'),
                 'type' => 'string',
                 'default' => '', // '50px',
+                'group' => 'Slide display'
             ],
 
             'cssEase' => [
@@ -198,6 +217,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.cssEase.placeholder'),
                 'type' => 'string',
                 'default' => '', // 'ease',
+                'group' => 'Slideshow dynamics'
             ],
 
             'customPaging' => [
@@ -206,6 +226,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.customPaging.placeholder'),
                 'type' => 'string', // function
                 'default' => '',
+                'group' => 'Slideshow control'
             ],
 
             'dots' => [
@@ -214,6 +235,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.dots.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow control'
             ],
                        
             'dotsClass' => [
@@ -222,6 +244,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.dotsClass.placeholder'),
                 'type' => 'string',
                 'default' => '', // 'slick-dots',
+                'group' => 'Slideshow control'
             ],
 
             'draggable' => [
@@ -230,6 +253,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.draggable.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
 
             'fade' => [
@@ -238,6 +262,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.fade.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow dynamics'
             ],
                                     
             'focusOnSelect' => [
@@ -246,6 +271,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.focusOnSelect.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow control'
             ],
 
             'easing' => [
@@ -254,6 +280,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.easing.placeholder'),
                 'type' => 'string',
                 'default' => '', // 'linear',
+                'group' => 'Slideshow dynamics'
             ],
                        
             'edgeFriction' => [
@@ -262,7 +289,8 @@ class Slideshow extends ComponentBase
                 'placeholder' => '0.15', // Lang::get('jumplink.slideshow::lang.components.slideshow.properties.edgeFriction.placeholder'),
                 'type' => 'string',
                 'validationPattern' => '^[0-9]+\.[0-9]+$',
-                'default' => '' // '0.15',
+                'default' => '', // '0.15',
+                'group' => 'Slideshow control'
             ],
 
             'infinite' => [
@@ -271,6 +299,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.infinite.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow dynamics'
             ],
                        
             'initialSlide' => [
@@ -280,6 +309,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'default' => '', // '0',
+                'group' => 'Slideshow dynamics'
             ],
 
             'lazyLoad' => [
@@ -303,6 +333,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.pauseOnFocus.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
 
             'pauseOnHover' => [
@@ -311,6 +342,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.pauseOnHover.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
 
             'pauseOnDotsHover' => [
@@ -319,6 +351,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.pauseOnDotsHover.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow control'
             ],
                        
             'respondTo' => [
@@ -344,7 +377,8 @@ class Slideshow extends ComponentBase
                 'placeholder' => '1', // Lang::get('jumplink.slideshow::lang.components.slideshow.properties.rows.placeholder'),
                 'type' => 'string',
                 'validationPattern' => '^[0-9]+$',
-                'default' => '' // '1',
+                'default' => '', // '1',
+                'group' => 'Slideshow dynamics'
             ],
 
             'slide' => [
@@ -362,6 +396,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string', // int
                 'validationPattern' => '^[0-9]+$',
                 'default' => '', // '1',
+                'group' => 'Slideshow dynamics'
             ],
 
             'slidesToShow' => [
@@ -371,6 +406,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string', // int
                 'validationPattern' => '^[0-9]+$',
                 'default' => '1',
+                'group' => 'Slideshow dynamics'
             ],
 
             'slidesToScroll' => [
@@ -380,6 +416,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string', // int
                 'validationPattern' => '^[0-9]+$',
                 'default' => '', // '1',
+                'group' => 'Slideshow control'
             ],
 
             'speed' => [
@@ -389,6 +426,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string', // int(ms)',
                 'validationPattern' => '^[0-9]+$',
                 'default' => '', // '300',
+                'group' => 'Slideshow dynamics'
             ],
 
             'swipe' => [
@@ -397,6 +435,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.swipe.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
                        
             'swipeToSlide' => [
@@ -405,6 +444,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.swipeToSlide.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow control'
             ],
 
             'touchMove' => [
@@ -413,6 +453,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.touchMove.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow control'
             ],
 
             'touchThreshold' => [
@@ -421,7 +462,8 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.touchThreshold.placeholder'),
                 'type' => 'string', // int
                 'validationPattern' => '^[0-9]+$',
-                'default' => '' // '5',
+                'default' => '', // '5',
+                'group' => 'Slideshow control'
             ],
 
             'useCSS' => [
@@ -430,6 +472,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.useCSS.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow display'
             ],
                        
             'useTransform' => [
@@ -438,6 +481,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.useTransform.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow display'
             ],
                        
             'variableWidth' => [
@@ -446,6 +490,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.variableWidth.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow display'
             ],
 
             'vertical' => [
@@ -454,6 +499,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.vertical.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow display'
             ],
                        
             'verticalSwiping' => [
@@ -462,6 +508,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.verticalSwiping.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow control'
             ],
 
             'rtl' => [
@@ -470,6 +517,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.rtl.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow dynamics'
             ],
                        
             'waitForAnimate' => [
@@ -478,6 +526,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.waitForAnimate.placeholder'),
                 'type' => 'checkbox',
                 'default' => 1,
+                'group' => 'Slideshow dynamics'
             ],
                        
             'zIndex' => [
@@ -509,6 +558,12 @@ class Slideshow extends ComponentBase
 
         $this->slideshow = $slideshowQueryBuilder->firstOrFail();
 
+        if ($this->property('injectJQuery'))
+        {
+            $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
+            $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
+        }
+        
         if ($this->property('injectSlickAssets'))
         {
             $this->addCss('assets/vendor/slick-carousel/slick/slick.css');
@@ -520,11 +575,6 @@ class Slideshow extends ComponentBase
             $this->addCss('assets/vendor/slick-carousel/slick/slick-theme.css');            
         }
 
-        if ($this->property('injectJQuery'))
-        {
-            $this->addJs('assets/vendor/jquery/dist/jquery.min.js');
-            $this->addJs('assets/vendor/jquery-migrate/jquery-migrate.min.js');
-        }
 
         if ($this->property('injectJLSlideshowCSS'))
         {
