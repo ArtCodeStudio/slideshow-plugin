@@ -155,6 +155,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.asNavFor.placeholder'),
                 'type' => 'string',
                 'default' => '',
+                'group' => 'Slideshow control'
             ],
 
             'appendArrows' => [
