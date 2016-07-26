@@ -18,7 +18,7 @@
                     {% elseif __SELF__.property('aspect_ratio') == 'custom' %}
                         <div class="carousel-video-wrapper" style="padding-top: {{ 100.0 / slide.custom_ratio}}%">
                     {% else %}
-                        <div class="carousel-video wrapper {{__SELF__.property('aspect_ratio')}}">
+                        <div class="carousel-video-wrapper {{__SELF__.property('aspect_ratio')}}">
                     {% endif %}
                             <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                 {% if slide.mp4 != blank %}
