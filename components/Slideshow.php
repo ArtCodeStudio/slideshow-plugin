@@ -318,6 +318,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.lazyLoad.placeholder'),
                 'type' => 'string',
                 'default' => '', //'ondemand',
+                'group' => 'Slide display'
             ],
             'mobileFirst' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.mobileFirst.title',
@@ -325,6 +326,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.mobileFirst.placeholder'),
                 'type' => 'checkbox',
                 'default' => 0,
+                'group' => 'Slideshow display'
             ],
                        
             'pauseOnFocus' => [
@@ -361,6 +363,7 @@ class Slideshow extends ComponentBase
                 'type' => 'dropdown',
                 'options' => ['window' => 'window', 'slider' => 'slider', 'min' => 'min'],
                 'default' => 'window',
+                'group' => 'Slideshow display'
             ],
 
             'responsive' => [
@@ -369,6 +372,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.responsive.placeholder'),
                 'type' => 'string', // object
                 'default' => '',
+                'group' => 'Slideshow display'
             ],
                        
             'rows' => [
@@ -387,6 +391,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.slide.placeholder'),
                 'type' => 'string', // element
                 'default' => '',
+                'group' => 'Slideshow control'
             ],
                        
             'slidesPerRow' => [
@@ -536,6 +541,7 @@ class Slideshow extends ComponentBase
                 'type' => 'string', // number
                 'validationPattern' => '^[0-9]+$',
                 'default' => '' // '1000',
+                'group' => 'Slideshow display'
             ],
 
         ];
