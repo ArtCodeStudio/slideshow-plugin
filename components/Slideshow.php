@@ -540,7 +540,7 @@ class Slideshow extends ComponentBase
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.zIndex.placeholder'),
                 'type' => 'string', // number
                 'validationPattern' => '^[0-9]+$',
-                'default' => '' // '1000',
+                'default' => '', // '1000',
                 'group' => 'Slideshow display'
             ],
 
