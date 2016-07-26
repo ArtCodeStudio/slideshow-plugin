@@ -61,6 +61,11 @@
                     'description' => 'choose aspect ratio for the slides'
                 ],
 
+                'customRatio' => [
+                    'title' => 'Custom Ratio',
+                    'description' => 'enter a custom aspect ratio (if selected "custom" in aspectRatio option)'
+                ],
+
                 'captionPosition' => [
                     'title' => 'captionPosition',
                     'description' => 'specify css classes for caption positioning: top, middle, bottom | left, center, right',
