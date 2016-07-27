@@ -177,11 +177,21 @@
                 {{ __SELF__.property('zIndex') == blank ? '//' : '' }}           zIndex:             Number( {{ __SELF__.property('zIndex') }}),
             };
         
-            $('#{{__SELF__.alias}}').slick(slickSettings);
     {% endput %}
+
+    {# TODO: CLEAN UP THE FOLLOWING MESS AND ADD SOME COMMENTING #}
+
     {% if __SELF__.property('nextSlideOnEnd') == 1 %}
         {% put scripts %}
             var onVideoEnd = function() {
+                $('#{{__SELF__.alias}}').slick('slickPlay');
+            };
+            var onFirstVideoEnd = function() {
+                var theId='{{__SELF__.alias}}-slide-'+{{autoplayIndex}}+'-video';
+                var theVideo = document.getElementById(theId);
+                if (theVideo != null)
+                    theVideo.addEventListener('ended', onVideoEnd);
+                $('#{{__SELF__.alias}}').slick('slickSetOption', 'autoplay', true, true);
                 $('#{{__SELF__.alias}}').slick('slickPlay');
             };
 
@@ -190,7 +200,10 @@
                 var theId='{{__SELF__.alias}}-slide-'+(i+1)+'-video';
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null) {
-                    theVideo.addEventListener('ended', onVideoEnd);
+                    if (i+1 == {{autoplayIndex}})
+                        theVideo.addEventListener('ended', onFirstVideoEnd);
+                    else
+                        theVideo.addEventListener('ended', onVideoEnd);
                 }
             }
         {% endput %}
@@ -210,17 +223,24 @@
         {% if autoplayIndex != -1 %}
             {% put scripts %}
             $('#{{__SELF__.alias}}').on('init reInit', function(event, slick) {
+                console.log("on", event.type);
                 var theId='{{__SELF__.alias}}-slide-{{autoplayIndex}}-video';
+                console.log("theVideo with id", theId);
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null) {
-                    $('#{{__SELF__.alias}}').slick('slickPause');
+                    console.log("!= null");
+                    slickSettings.autoplay=false;
+                    //$('#{{__SELF__.alias}}').slick('slickPause');
                     theVideo.play();
                 }
+                else console.log("== null");
             });
             {% endput%}
         {% endif %}
     {% endif %}
     {% put scripts %}
+            $('#{{__SELF__.alias}}').slick(slickSettings);
+            $('#{{__SELF__.alias}}').slick('slickSetOption', 'autoplay', true, true);
         </script>
     {% endput %}
 {% endif %}
