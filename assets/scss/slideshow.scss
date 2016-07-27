@@ -110,3 +110,76 @@
         opacity: $slick-arrow-opacity-disabled;
     }
 }
+
+
+/*
+ * ASPECT RATIO for background images
+ *
+ * @authors Marc Hinse, Pascal Garber
+ * @see: http://www.jumplink.eu/blog/post/onlineshop-immer-einheitlich-grosse-produktbilder
+ * @see: http://www.mademyday.de/css-height-equals-width-with-pure-css.html
+ */
+.background-box {
+	background-size: cover;
+	background-position: center center;
+
+	width: 100%;
+	padding-top: 100%; // Default 1-1 aspect ratio
+
+	&.ratio-1-1 {
+		padding-top: 100%;
+	}
+	&.ratio-2-1 {
+		padding-top: 50%;
+	}
+	&.ratio-1-2 {
+		padding-top: 200%;
+	}
+	&.ratio-4-3 {
+		padding-top: 75%;
+	}
+	&.ratio-16-9 {
+		padding-top: 56.25%;
+	}
+	&.ratio-3-4 {
+		padding-top: 125%;
+	}
+}
+
+.box {
+	position: relative;
+	width: 100%;		/* desired width */
+
+	.content, img, video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+	&:before {
+		content: "";
+		display: block;
+		padding-top:  56.25%;
+
+	}
+
+	&.ratio-1-1:before {
+		padding-top: 100%;
+	}
+	&.ratio-2-1:before {
+		padding-top: 50%;
+	}
+	&.ratio-1-2:before {
+		padding-top: 200%;
+	}
+	&.ratio-4-3:before {
+		padding-top: 75%;
+	}
+	&.ratio-16-9:before {
+		padding-top: 56.25%;
+	}
+	&.ratio-3-4:before {
+		padding-top: 125%;
+	}
+}
