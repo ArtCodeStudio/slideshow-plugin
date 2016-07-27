@@ -209,7 +209,7 @@
         {% endput %}
         {% if autoplayIndex != -1 %}
             {% put scripts %}
-            $('#{{_SELF__.alias}}').on('init reInit', function(event, slick) {
+            $('#{{__SELF__.alias}}').on('init reInit', function(event, slick) {
                 var theId='{{__SELF__.alias}}-slide-{{autoplayIndex}}-video';
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null) {

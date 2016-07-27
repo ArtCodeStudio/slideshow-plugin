@@ -99,7 +99,7 @@
   .background-box.ratio-16-9 {
     padding-top: 56.25%; }
   .background-box.ratio-3-4 {
-    padding-top: 125%; }
+    padding-top: 133.33%; }
 
 .box {
   position: relative;
@@ -126,4 +126,4 @@
   .box.ratio-16-9:before {
     padding-top: 56.25%; }
   .box.ratio-3-4:before {
-    padding-top: 125%; }
+    padding-top: 133.33%; }
