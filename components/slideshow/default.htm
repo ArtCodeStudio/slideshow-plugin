@@ -40,7 +40,7 @@
                                     {% endif %}
                                 </video>
                             </div>
-                        {% elseif __SELF__.property('aspect_ratio') == 'custom' %}
+                        {% elseif __SELF__.property('aspectRatio') == 'custom' %}
                             <div class="box {{slide.aspect_ratio}}" style="padding-top: {{ 100.0 / __SELF__.property('captionPosition') }}">
                                 <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                     {% if slide.mp4 != blank %}
@@ -54,7 +54,7 @@
                                     {% endif %}
                                 </video>
                             </div>
-                        {% elseif __SELF__.property('aspect_ratio') != blank %}
+                        {% elseif __SELF__.property('aspectRatio') != blank %}
                             <div class="box {{ __SELF__.property('aspect_ratio') }}">
                                 <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                     {% if slide.mp4 != blank %}
@@ -99,10 +99,10 @@
                             <div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
                         {% elseif slide.aspect_ratio != blank %}
                             <div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
-                        {% elseif __SELF__.property('aspect_ratio') == 'custom' %}
+                        {% elseif __SELF__.property('aspectRatio') == 'custom' %}
                             <div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }} background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
-                        {% elseif __SELF__.property('aspect_ratio') != blank %}
-                            <div class="background-box {{ __SELF__.property('aspect_ratio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+                        {% elseif __SELF__.property('aspectRatio') != blank %}
+                            <div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                         {% else %}
                             <div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                         {% endif %}
