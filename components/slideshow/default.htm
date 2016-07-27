@@ -191,7 +191,7 @@
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null)
                     theVideo.addEventListener('ended', onVideoEnd);
-                $('#{{__SELF__.alias}}').slick('slickSetOption', 'autoplay', true, true);
+                $('#{{__SELF__.alias}}').slick('slickSetOption', 'autoplay', Boolean( {{ __SELF__.property('autoplay') }} ) === true, true);
                 $('#{{__SELF__.alias}}').slick('slickPlay');
             };
 
@@ -240,7 +240,6 @@
     {% endif %}
     {% put scripts %}
             $('#{{__SELF__.alias}}').slick(slickSettings);
-            $('#{{__SELF__.alias}}').slick('slickSetOption', 'autoplay', true, true);
         </script>
     {% endput %}
 {% endif %}
