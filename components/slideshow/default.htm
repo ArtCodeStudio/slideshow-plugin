@@ -13,7 +13,7 @@
 
                     <div class="carousel-video-wrapper">
                         {% if slide.aspect_ratio == 'custom' %}
-                            <div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}};">
+                            <div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
                                 <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                     {% if slide.mp4 != blank %}
                                         <source src="{{slide.mp4.path}}" type="video/mp4">
@@ -41,7 +41,7 @@
                                 </video>
                             </div>
                         {% elseif __SELF__.property('aspectRatio') == 'custom' %}
-                            <div class="box {{slide.aspect_ratio}}" style="padding-top: {{ 100.0 / __SELF__.property('captionPosition') }}">
+                            <div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
                                 <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                     {% if slide.mp4 != blank %}
                                         <source src="{{slide.mp4.path}}" type="video/mp4">
@@ -55,7 +55,7 @@
                                 </video>
                             </div>
                         {% elseif __SELF__.property('aspectRatio') != blank %}
-                            <div class="box {{ __SELF__.property('aspect_ratio') }}">
+                            <div class="box {{ __SELF__.property('aspectRatio') }}">
                                 <video id="{{__SELF__.alias}}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
                                     {% if slide.mp4 != blank %}
                                         <source src="{{slide.mp4.path}}" type="video/mp4">
@@ -96,11 +96,11 @@
                     <div class="carousel-image-wrapper">
 
                         {% if slide.aspect_ratio == 'custom' %}
-                            <div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
+                            <div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
                         {% elseif slide.aspect_ratio != blank %}
                             <div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
                         {% elseif __SELF__.property('aspectRatio') == 'custom' %}
-                            <div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }} background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+                            <div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                         {% elseif __SELF__.property('aspectRatio') != blank %}
                             <div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                         {% else %}
