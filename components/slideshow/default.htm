@@ -113,7 +113,7 @@
                                 <div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                             {% endif %}
 
-                            {% if slide.name != blank or slide.description != blank  %}
+                            {% if __SELF__.property('showCaptions') and (slide.name != blank or slide.description != blank)  %}
                                 <div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
                                     <div class="carousel-caption-content">
                                         <h2>{{ slide.name | raw }}</h2>
@@ -190,14 +190,14 @@
 
     {% if __SELF__.property('nextSlideOnEnd') == 1 %}
         {% put scripts %}
-            var onVideoEnd = function() {
+            var {{ str_camel(__SELF__.alias) }}onVideoEnd = function() {
                 $('#{{ str_camel(__SELF__.alias) }}').slick('slickPlay');
             };
-            var onFirstVideoEnd = function() {
+            var {{ str_camel(__SELF__.alias) }}onFirstVideoEnd = function() {
                 var theId='{{ str_camel(__SELF__.alias) }}-slide-'+{{autoplayIndex}}+'-video';
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null)
-                    theVideo.addEventListener('ended', onVideoEnd);
+                    theVideo.addEventListener('ended', {{ str_camel(__SELF__.alias) }}onVideoEnd);
                 $('#{{ str_camel(__SELF__.alias) }}').slick('slickSetOption', 'autoplay', Boolean( {{ __SELF__.property('autoplay') }} ) === true, true);
                 $('#{{ str_camel(__SELF__.alias) }}').slick('slickPlay');
             };
@@ -208,9 +208,9 @@
                 var theVideo = document.getElementById(theId);
                 if (theVideo != null) {
                     if (i+1 == {{autoplayIndex}})
-                        theVideo.addEventListener('ended', onFirstVideoEnd);
+                        theVideo.addEventListener('ended', {{ str_camel(__SELF__.alias) }}onFirstVideoEnd);
                     else
-                        theVideo.addEventListener('ended', onVideoEnd);
+                        theVideo.addEventListener('ended', {{ str_camel(__SELF__.alias) }}onVideoEnd);
                 }
             }
         {% endput %}

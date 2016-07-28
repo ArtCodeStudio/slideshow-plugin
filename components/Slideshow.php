@@ -74,6 +74,14 @@ class Slideshow extends ComponentBase
                 'group' => 'Slide display'
             ],
 
+            'showCaptions' => [
+                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.showCaptions.title',
+                 'description' =>  'jumplink.slideshow::lang.components.slideshow.properties.showCaptions.description',
+                 'type' => 'checkbox',
+                 'default' => 1,
+                 'group' => 'Slide display'
+            ],
+
             'captionPosition' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.captionPosition.description',

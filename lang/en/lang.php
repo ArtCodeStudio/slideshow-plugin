@@ -71,6 +71,11 @@
                     'description' => 'specify css classes for caption positioning: top, middle, bottom | left, center, right',
                 ],
 
+                'showCaptions' => [
+                    'title' => 'showCaptions',
+                    'description' => 'show captions or not',
+                ],
+
                 'autoplayOnShow' => [
                     'title' => 'autoplayOnShow',
                     'description' => 'autoplay embedded videos on slide activation',
