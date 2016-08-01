@@ -187,7 +187,12 @@
     {% endput %}
 
     {# TODO: CLEAN UP THE FOLLOWING MESS AND ADD SOME COMMENTING #}
-
+        {% put scripts %}
+            var {{str_camel(__SELF__.alias)}}PlayingVideo = null;
+            var {{str_camel(__SELF__.alias)}}Pause = function() {
+                if ({{str_camel(__SELF__.alias)}}PlayingVideo == null)
+                    $('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
+            }
     {% if __SELF__.property('nextSlideOnEnd') == 1 %}
         {% put scripts %}
             var {{ str_camel(__SELF__.alias) }}onVideoEnd = function() {
@@ -224,7 +229,10 @@
                 if (theVideo != null) {
                     $('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
                     theVideo.play();
+                    {{ str_camel(__SELF__.alias) }}playingVideo=currentSlide;
                 }
+                else
+                    {{ str_camel(__SELF__.alias) }}playingVideo=null;
             });
         {% endput %}
         {% if autoplayIndex != -1 %}
@@ -239,6 +247,7 @@
                     {{ str_camel(__SELF__.alias) }}Settings.autoplay=false;
                     //$('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
                     theVideo.play();
+                    playingVideo=currentSlide;
                 }
                 else console.log("== null");
             });
