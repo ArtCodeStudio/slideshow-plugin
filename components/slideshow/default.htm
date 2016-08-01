@@ -211,6 +211,7 @@
                         theVideo.play();
                 }
             }
+        {% endput %}
     {% if __SELF__.property('nextSlideOnEnd') == 1 %}
         {% put scripts %}
             var {{ str_camel(__SELF__.alias) }}onVideoEnd = function() {
