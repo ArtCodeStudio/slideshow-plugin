@@ -192,6 +192,24 @@
             var {{str_camel(__SELF__.alias)}}Pause = function() {
                 if ({{str_camel(__SELF__.alias)}}PlayingVideo == null)
                     $('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
+                else
+                {                    
+                    var theId='{{ str_camel(__SELF__.alias) }}-slide-'+({{str_camel(__SELF__.alias)}}PlayingVideo+1)+'-video';
+                    var theVideo = document.getElementById(theId);
+                    if (theVideo != null) {
+                        theVideo.pause();
+                }
+            }
+            var {{str_camel(__SELF__.alias)}}Play = function() {
+                if ({{str_camel(__SELF__.alias)}}PlayingVideo == null)
+                    $('#{{ str_camel(__SELF__.alias) }}').slick('slickPlay');
+                else
+                {                    
+                    var theId='{{ str_camel(__SELF__.alias) }}-slide-'+({{str_camel(__SELF__.alias)}}PlayingVideo+1)+'-video';
+                    var theVideo = document.getElementById(theId);
+                    if (theVideo != null) {
+                        theVideo.play();
+                }
             }
     {% if __SELF__.property('nextSlideOnEnd') == 1 %}
         {% put scripts %}
