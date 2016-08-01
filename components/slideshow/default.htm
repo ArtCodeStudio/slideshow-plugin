@@ -250,10 +250,10 @@
                 if (theVideo != null) {
                     $('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
                     theVideo.play();
-                    {{ str_camel(__SELF__.alias) }}playingVideo=currentSlide;
+                    {{ str_camel(__SELF__.alias) }}PlayingVideo=currentSlide;
                 }
                 else
-                    {{ str_camel(__SELF__.alias) }}playingVideo=null;
+                    {{ str_camel(__SELF__.alias) }}PlayingVideo=null;
             });
         {% endput %}
         {% if autoplayIndex != -1 %}
@@ -268,7 +268,7 @@
                     {{ str_camel(__SELF__.alias) }}Settings.autoplay=false;
                     //$('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
                     theVideo.play();
-                    playingVideo={{autoplayIndex-1}};
+                    {{ str_camel(__SELF__.alias) }}PlayingVideo={{autoplayIndex-1}};
                 }
                 else console.log("== null");
             });
