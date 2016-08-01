@@ -268,7 +268,7 @@
                     {{ str_camel(__SELF__.alias) }}Settings.autoplay=false;
                     //$('#{{ str_camel(__SELF__.alias) }}').slick('slickPause');
                     theVideo.play();
-                    playingVideo=currentSlide;
+                    playingVideo={{autoplayIndex-1}};
                 }
                 else console.log("== null");
             });
