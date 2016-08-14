@@ -102,15 +102,15 @@
                         <div class="carousel-image-wrapper">
 
                             {% if slide.aspect_ratio == 'custom' %}
-                                <div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
+                                <div id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-image" class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
                             {% elseif slide.aspect_ratio != blank %}
-                                <div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
+                                <div id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-image" class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
                             {% elseif __SELF__.property('aspectRatio') == 'custom' %}
-                                <div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+                                <div id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-image" class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                             {% elseif __SELF__.property('aspectRatio') != blank %}
-                                <div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+                                <div id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-image" class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                             {% else %}
-                                <div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+                                <div id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-image" class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
                             {% endif %}
 
                             {% if __SELF__.property('showCaptions') and (slide.name != blank or slide.description != blank)  %}
@@ -149,10 +149,12 @@
                 if( selector ) {
                     slideshow.$slider = $(selector);
                     slideshow.videoSlideSelector = selector+'-slide-[index]-video';
+                    slideshow.imageSlideSelector = selector+'-slide-[index]-image';
+                    
                 } else {
                     slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
-                    slideshow.videoSlideSelector = '{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
-                    
+                    slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
+                    slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
                 }
                 
                 // stop here if slick is already initialized
@@ -226,9 +228,10 @@
                         slideshow.$slider.slick('slickPause');
                     } else {                    
                         var theId = slideshow.videoSlideSelector.replace('[index]', playingVideo+1);
-                        var theVideo = document.getElementById(theId);
+                        var $video = $(theId);
+                        var theVideo = $video.get(0);
                         if (theVideo != null) {
-                            theVideo.pause(); // TODO wie kann das funktionieren?
+                            theVideo.pause();
                         }
                     }
                 }
@@ -237,9 +240,10 @@
                         slideshow.$slider.slick('slickPlay');
                     } else {
                         var theId = slideshow.videoSlideSelector.replace('[index]', playingVideo+1);
-                        var theVideo = document.getElementById(theId);
+                        var $video = $(theId);
+                        var theVideo = $video.get(0);
                         if (theVideo != null) {
-                            theVideo.play(); // TODO wie kann das funktionieren?
+                            theVideo.play();
                         }
                     }
                 }
@@ -253,17 +257,20 @@
                 
                 var onFirstVideoEnd = function() {
                     var theId = slideshow.videoSlideSelector.replace('[index]', '{{autoplayIndex}}');
-                    var theVideo = document.getElementById(theId);
-                    if (theVideo != null)
+                    var $video = $(theId);
+                    var theVideo = $video.get(0);
+                    if (theVideo != null) {
                         theVideo.addEventListener('ended', onVideoEnd);
-                    slideshow.$slider.slick('slickSetOption', 'autoplay', Boolean( {{ __SELF__.property('autoplay') }} ) === true, true);
+                    }
+                    slideshow.$slider.slick('slickSetOption', 'autoplay', slideshow.settings.autoplay, true);
                     slideshow.$slider.slick('slickPlay');
                 };
                 
                 if( slideshow.settings.nextSlideOnEnd ) {
                     for (var i = 0; i < slideshow.slides.length; i++) {
-                        var theId = slideshow.videoSlideSelector.replace('[index]', (i+1));
-                        var theVideo = document.getElementById(theId);
+                        var theId = slideshow.videoSlideSelector.replace('[index]', i+1);
+                        var $video = $(theId);
+                        var theVideo = $video.get(0);
                         if (theVideo != null) {
                             if (i+1 == {{autoplayIndex}}) {
                                 theVideo.addEventListener('ended', onFirstVideoEnd);
@@ -277,11 +284,12 @@
                 if( slideshow.settings.autoplayOnShow ) {
                     slideshow.$slider.on('afterChange', function(event, slick, currentSlide){
                         console.log("onAfterChange", currentSlide);
-                        var theId = slideshow.videoSlideSelector.replace('[index]', (currentSlide+1));
-                        var theVideo = document.getElementById(theId); // TODO use jQuery for that, note than you need to prepent # for that
+                        var theId = slideshow.videoSlideSelector.replace('[index]', currentSlide+1);
+                        var $video = $(theId);
+                        var theVideo = $video.get(0);
                         if (theVideo != null) {
                             slideshow.$slider.slick('slickPause');
-                            theVideo.play(); // TODO wie kann das funktionieren?
+                            theVideo.play();
                             playingVideo = currentSlide;
                         }
                         else {
@@ -294,13 +302,14 @@
                         slideshow.$slider.on('init reInit', function(event, slick) {
                             console.log("on", event.type);
                             var theId = slideshow.videoSlideSelector.replace('[index]', '{{autoplayIndex}}');
+                            var $video = $(theId);
+                            var theVideo = $video.get(0);
                             console.log("theVideo with id", theId);
-                            var theVideo = document.getElementById(theId); // TODO use jQuery for that
                             if (theVideo != null) {
                                 console.log("!= null");
-                                slideshow.settings.autoplay=false;
+                                slideshow.settings.autoplay = false;
                                 //slideshow.$slider.slick('slickPause');
-                                theVideo.play(); // TODO wie kann das funktionieren?
+                                theVideo.play();
                                 playingVideo = {{autoplayIndex-1}}; // TODO Do this in pure javascript?
                             }
                             else {
