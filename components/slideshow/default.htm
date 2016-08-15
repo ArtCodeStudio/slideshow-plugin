@@ -243,10 +243,10 @@
 				slideshow.stop_slideshow = function() {
 					console.log('stop slideshow');
 					slideshow.$slider.slick('slickPause');
-					var theVideo = $(".slick-current video");
-						theVideo.off('ended', onVideoEnd);
-						theVideo[0].pause();
-						theVideo[0].currentTime = 0;
+					var $theVideo = $(".slick-current video");
+						$theVideo.off('ended', onVideoEnd);
+						$theVideo[0].pause();
+						$theVideo[0].currentTime = 0;
 				}
 
 
@@ -275,9 +275,9 @@
 				*/
 				slideshow.startVideoPlayback = function() {
 					console.log("startVideoPlayback called");
-					var theVideo = $(".slick-current video");
-						theVideo[0].play();
-						theVideo.on('ended', onVideoEnd );
+					var $theVideo = $(".slick-current video");
+						$theVideo[0].play();
+						$theVideo.on('ended', onVideoEnd );
 					slideshow.$slider.slick('slickPause'); // pause slideshow until video ends
 				}
 
@@ -288,11 +288,11 @@
 				*/
 				slideshow.onVideoEnd = function() {
 					console.log("onVideoEnd called");
-					var theVideo = $(".slick-current video");
+					var $theVideo = $(".slick-current video");
 					slideshow.$slider.slick("slickNext");
-						theVideo.off('ended', onVideoEnd);
-						theVideo[0].pause();
-						theVideo[0].currentTime = 0;
+						$theVideo.off('ended', onVideoEnd);
+						$theVideo[0].pause();
+						$theVideo[0].currentTime = 0;
 				}
 
 				if(!selector) {
