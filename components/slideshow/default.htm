@@ -171,6 +171,17 @@
 				};
 								
 				var playingVideo = null;
+               
+			    if( selector ) {
+                    slideshow.$slider = $(selector);
+                    slideshow.videoSlideSelector = selector+'-slide-[index]-video';
+                    slideshow.imageSlideSelector = selector+'-slide-[index]-image';
+                    
+                } else {
+                    slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
+                    slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
+                    slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
+                }
 
                 // stop here if slick is already initialized
                 if( slideshow.$slider.hasClass('slick-initialized') ) {
@@ -300,16 +311,6 @@
 						$theVideo[0].currentTime = 0;
 				}
 
-                if( selector ) {
-                    slideshow.$slider = $(selector);
-                    slideshow.videoSlideSelector = selector+'-slide-[index]-video';
-                    slideshow.imageSlideSelector = selector+'-slide-[index]-image';
-                    
-                } else {
-                    slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
-                    slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
-                    slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
-                }
 
 
 				/**
