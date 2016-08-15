@@ -257,12 +257,15 @@
 				*  ( stop video, remove event handler, stop slick )
 				*/
 				slideshow.stop_slideshow = function() {
-					console.log('stop slideshow');
+					var currentSlideType = $(".slick-current").data("slide-type");
+					// console.log('stop slideshow', currentSlideType);
 					slideshow.$slider.slick('slickPause');
-					var $theVideo = $(".slick-current video");
-						$theVideo.off('ended', slideshow.onVideoEnd);
-						$theVideo[0].pause();
-						$theVideo[0].currentTime = 0;
+					if(currentSlideType === 'video'){
+						var $theVideo = $(".slick-current video");
+							$theVideo.off('ended', slideshow.onVideoEnd);
+							$theVideo[0].pause();
+							$theVideo[0].currentTime = 0;
+					}
 				}
 
 
