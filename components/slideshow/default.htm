@@ -161,7 +161,7 @@
 				console.log("INIT");
 				
 				var slideshow = {
-					slideshow.$slider: null,
+					$slider: null,
 					settings: null,
 					videoSlideSelector: null,
 					imageSlideSelector: null,
@@ -232,7 +232,7 @@
 				slideshow.resume_slideshow = function () {
 					var currentSlideType = $(".slick-current").data("slide-type");
 					console.log('resume_slideshow called: ', currentSlideType);
-					handleSlideType( currentSlideType );
+					slideshow.handleSlideType( currentSlideType );
 				}
 
 
@@ -244,7 +244,7 @@
 					console.log('stop slideshow');
 					slideshow.$slider.slick('slickPause');
 					var $theVideo = $(".slick-current video");
-						$theVideo.off('ended', onVideoEnd);
+						$theVideo.off('ended', slideshow.onVideoEnd);
 						$theVideo[0].pause();
 						$theVideo[0].currentTime = 0;
 				}
@@ -258,7 +258,7 @@
 					switch( currentSlideType )
 					{
 						case 'video': {
-							startVideoPlayback();
+							slideshow.startVideoPlayback();
 						};break;
 
 						case 'image': {
@@ -277,7 +277,7 @@
 					console.log("startVideoPlayback called");
 					var $theVideo = $(".slick-current video");
 						$theVideo[0].play();
-						$theVideo.on('ended', onVideoEnd );
+						$theVideo.on('ended', slideshow.onVideoEnd );
 					slideshow.$slider.slick('slickPause'); // pause slideshow until video ends
 				}
 
@@ -290,16 +290,21 @@
 					console.log("onVideoEnd called");
 					var $theVideo = $(".slick-current video");
 					slideshow.$slider.slick("slickNext");
-						$theVideo.off('ended', onVideoEnd);
+						$theVideo.off('ended',  slideshow.onVideoEnd);
 						$theVideo[0].pause();
 						$theVideo[0].currentTime = 0;
 				}
 
-				if(!selector) {
-					slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
-				} else {
-					slideshow.$slider = $(selector);
-				}
+                if( selector ) {
+                    slideshow.$slider = $(selector);
+                    slideshow.videoSlideSelector = selector+'-slide-[index]-video';
+                    slideshow.imageSlideSelector = selector+'-slide-[index]-image';
+                    
+                } else {
+                    slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
+                    slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
+                    slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
+                }
 
 				// stop here if slick is already initialized
 				if( slideshow.$slider.hasClass('slick-initialized') ) {
@@ -313,22 +318,22 @@
 				slideshow.$slider.on('afterChange', function( event, slick ) {
 					// TODO use slick param oder this to make shure you select the right slideshow
 					var currentSlideType = $(".slick-current").data("slide-type");
-					handleSlideType(currentSlideType);
+					slideshow.handleSlideType(currentSlideType);
 				});
 
-				slideshow.$slider.on('jumplink_slideshow_stop', stop_slideshow);
-				slideshow.$slider.on('jumplink_resume_slideshow', resume_slideshow);
+				slideshow.$slider.on('jumplink_slideshow_stop', slideshow.stop_slideshow);
+				slideshow.$slider.on('jumplink_resume_slideshow', slideshow.resume_slideshow);
 
 				// main initialisation
 				slideshow.$slider.slick( slideshow.settings );
 
-				resume_slideshow();
+				slideshow.resume_slideshow();
                 // return slideshow object to make properties and methods public
                 return slideshow;
 
 
 			}
-			{% if __SELF__.property('INITmanually') %}
+			{% if __SELF__.property('initAuto') %}
 				var currentSlideshow = {{ str_camel(__SELF__.alias) }}Init();
 			{% endif %}
 		</script>

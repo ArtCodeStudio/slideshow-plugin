@@ -25,9 +25,9 @@
                     'placeholder' => 'Select slideshow',
                 ],
                 
-                'INITmanually' => [
-                    'title' => 'INITmanually',
-                    'description' => 'Manually initialise Slideshow',
+                'initAuto' => [
+                    'title' => 'initAuto',
+                    'description' => 'Automatically initialise Slideshow',
                     'placeholder' => 'false',
                 ],
 
