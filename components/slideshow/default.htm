@@ -172,6 +172,11 @@
 								
 				var playingVideo = null;
 
+                // stop here if slick is already initialized
+                if( slideshow.$slider.hasClass('slick-initialized') ) {
+                    return false;
+                }
+
                 slideshow.settings = {
                     {{ __SELF__.property('accessibility') == blank ? '//' : '' }}    accessibility:      Boolean( {{ __SELF__.property('accessibility') }} ) === true ,
                     {{ __SELF__.property('adaptiveHeight') == blank ? '//' : '' }}   adaptiveHeight:     Boolean( {{ __SELF__.property('adaptiveHeight') }} ) === true,
@@ -305,11 +310,6 @@
                     slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
                     slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
                 }
-
-				// stop here if slick is already initialized
-				if( slideshow.$slider.hasClass('slick-initialized') ) {
-					return false;
-				}
 
 
 				/**
