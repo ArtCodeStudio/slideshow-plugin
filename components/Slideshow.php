@@ -29,7 +29,12 @@ class Slideshow extends ComponentBase
                 'placeholder'   => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.id.placeholder'),
                 'type'          => 'dropdown'
             ],
-            
+             'INITmanually' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.INITmanually.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.INITmanually.description',
+                'type'              => 'checkbox',
+                'default'           => 0
+            ],           
             'includeHTML' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.includeHTML.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.includeHTML.description',

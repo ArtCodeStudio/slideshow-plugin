@@ -1,323 +1,337 @@
 {% if __SELF__.slideshow.slides %}
-    
-    {##
-    # HTML
-    #}   
-    {% if __SELF__.property('includeHTML') %}
 
-        {% set autoplayIndex = -1 %}
+	{##
+	# HTML
+	#}
+	{% if __SELF__.property('includeHTML') %}
 
-        <div id='{{ str_camel(__SELF__.alias) }}' class="slick-carousel">
-            {% for i, slide in __SELF__.slideshow.slides %}
-                {% if __SELF__.slideshow.slides %}
-                    
-                    {% if slide.link %}
-                        {% set slickSlideElement = 'a' %}
-                    {% else %}
-                        {% set slickSlideElement = 'div' %}
-                    {% endif %}
-                    
-                    {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
-                        {% set slide_type = 'video'%}
-                    {% else %}
-                        {% set slide_type = 'image'%}
-                    {% endif %}
+		{% set autoplayIndex = -1 %}
 
-                    <{{slickSlideElement}} href="{{ slide.link }}" id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
-                        {% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
+		<div id='{{ str_camel(__SELF__.alias) }}' class="slick-carousel">
+			{% for i, slide in __SELF__.slideshow.slides %}
+				{% if __SELF__.slideshow.slides %}
 
-                            {% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %}
-                                {% set autoplayIndex = loop.index %}
-                            {% endif %}
+					{% if slide.link %}
+						{% set slickSlideElement = 'a' %}
+					{% else %}
+						{% set slickSlideElement = 'div' %}
+					{% endif %}
 
-                            <div class="carousel-video-wrapper">
-                                {% if slide.aspect_ratio == 'custom' %}
-                                    <div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
-                                            {% if slide.mp4 != blank %}
-                                                <source src="{{slide.mp4.path}}" type="video/mp4">
-                                            {% endif %}
-                                            {% if slide.ogg != blank %}
-                                                <source src="{{slide.ogg.path}}" type="video/ogg">
-                                            {% endif %}
-                                            {% if slide.webm != blank %}
-                                                <source src="{{slide.webm.path}}" type="video/webm">
-                                            {% endif %}
-                                        </video>
-                                    </div>
-                                {% elseif slide.aspect_ratio != blank %}
-                                    <div class="box {{slide.aspect_ratio}}">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
-                                            {% if slide.mp4 != blank %}
-                                                <source src="{{slide.mp4.path}}" type="video/mp4">
-                                            {% endif %}
-                                            {% if slide.ogg != blank %}
-                                                <source src="{{slide.ogg.path}}" type="video/ogg">
-                                            {% endif %}
-                                            {% if slide.webm != blank %}
-                                                <source src="{{slide.webm.path}}" type="video/webm">
-                                            {% endif %}
-                                        </video>
-                                    </div>
-                                {% elseif __SELF__.property('aspectRatio') == 'custom' %}
-                                    <div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
-                                            {% if slide.mp4 != blank %}
-                                                <source src="{{slide.mp4.path}}" type="video/mp4">
-                                            {% endif %}
-                                            {% if slide.ogg != blank %}
-                                                <source src="{{slide.ogg.path}}" type="video/ogg">
-                                            {% endif %}
-                                            {% if slide.webm != blank %}
-                                                <source src="{{slide.webm.path}}" type="video/webm">
-                                            {% endif %}
-                                        </video>
-                                    </div>
-                                {% elseif __SELF__.property('aspectRatio') != blank %}
-                                    <div class="box {{ __SELF__.property('aspectRatio') }}">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
-                                            {% if slide.mp4 != blank %}
-                                                <source src="{{slide.mp4.path}}" type="video/mp4">
-                                            {% endif %}
-                                            {% if slide.ogg != blank %}
-                                                <source src="{{slide.ogg.path}}" type="video/ogg">
-                                            {% endif %}
-                                            {% if slide.webm != blank %}
-                                                <source src="{{slide.webm.path}}" type="video/webm">
-                                            {% endif %}
-                                        </video>
-                                    </div>
-                                {% else %}
-                                    <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
-                                        {% if slide.mp4 != blank %}
-                                            <source src="{{slide.mp4.path}}" type="video/mp4">
-                                        {% endif %}
-                                        {% if slide.ogg != blank %}
-                                            <source src="{{slide.ogg.path}}" type="video/ogg">
-                                        {% endif %}
-                                        {% if slide.webm != blank %}
-                                            <source src="{{slide.webm.path}}" type="video/webm">
-                                        {% endif %}
-                                    </video>
-                                {% endif %}
+					{% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
+						{% set slide_type = 'video'%}
+					{% else %}
+						{% set slide_type = 'image'%}
+					{% endif %}
 
-                                {% if slide.name != blank or slide.description != blank  %}
-                                    <div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
-                                        <div class="carousel-caption-content">
-                                            <h2>{{ slide.name | raw }}</h2>
-                                            {{ slide.description | raw }}
-                                        </div>
-                                    </div>
-                                {% endif %}
+					<{{slickSlideElement}} href="{{ slide.link }}" id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
+						{% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
 
-                            </div>
-                        {% else %}
-                            <div class="carousel-image-wrapper">
+							{% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %}
+								{% set autoplayIndex = loop.index %}
+							{% endif %}
 
-                                {% if slide.aspect_ratio == 'custom' %}
-                                    <div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
-                                {% elseif slide.aspect_ratio != blank %}
-                                    <div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
-                                {% elseif __SELF__.property('aspectRatio') == 'custom' %}
-                                    <div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
-                                {% elseif __SELF__.property('aspectRatio') != blank %}
-                                    <div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
-                                {% else %}
-                                    <div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
-                                {% endif %}
+							<div class="carousel-video-wrapper">
+								{% if slide.aspect_ratio == 'custom' %}
+									<div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4">
+											{% endif %}
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg">
+											{% endif %}
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm">
+											{% endif %}
+										</video>
+									</div>
+								{% elseif slide.aspect_ratio != blank %}
+									<div class="box {{slide.aspect_ratio}}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4">
+											{% endif %}
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg">
+											{% endif %}
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm">
+											{% endif %}
+										</video>
+									</div>
+								{% elseif __SELF__.property('aspectRatio') == 'custom' %}
+									<div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4">
+											{% endif %}
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg">
+											{% endif %}
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm">
+											{% endif %}
+										</video>
+									</div>
+								{% elseif __SELF__.property('aspectRatio') != blank %}
+									<div class="box {{ __SELF__.property('aspectRatio') }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4">
+											{% endif %}
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg">
+											{% endif %}
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm">
+											{% endif %}
+										</video>
+									</div>
+								{% else %}
+									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
+										{% if slide.mp4 != blank %}
+											<source src="{{slide.mp4.path}}" type="video/mp4">
+										{% endif %}
+										{% if slide.ogg != blank %}
+											<source src="{{slide.ogg.path}}" type="video/ogg">
+										{% endif %}
+										{% if slide.webm != blank %}
+											<source src="{{slide.webm.path}}" type="video/webm">
+										{% endif %}
+									</video>
+								{% endif %}
 
-                                {% if slide.name != blank or slide.description != blank  %}
-                                    <div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
-                                        <div class="carousel-caption-content">
-                                            <h2>{{ slide.name | raw }}</h2>
-                                            {{ slide.description | raw }}
-                                        </div>
-                                    </div>
-                                {% endif %}
+								{% if slide.name != blank or slide.description != blank  %}
+									<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
+										<div class="carousel-caption-content">
+											<h2>{{ slide.name | raw }}</h2>
+											{{ slide.description | raw }}
+										</div>
+									</div>
+								{% endif %}
 
-                            </div>
-                        {% endif %}
-                    </{{slickSlideElement}}>
-                {% endif %}
-            {% endfor %}
-        </div>
+							</div>
+						{% else %}
+							<div class="carousel-image-wrapper">
 
-    {% endif %}
+								{% if slide.aspect_ratio == 'custom' %}
+									<div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
+								{% elseif slide.aspect_ratio != blank %}
+									<div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
+								{% elseif __SELF__.property('aspectRatio') == 'custom' %}
+									<div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+								{% elseif __SELF__.property('aspectRatio') != blank %}
+									<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+								{% else %}
+									<div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
+								{% endif %}
 
+								{% if slide.name != blank or slide.description != blank  %}
+									<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
+										<div class="carousel-caption-content">
+											<h2>{{ slide.name | raw }}</h2>
+											{{ slide.description | raw }}
+										</div>
+									</div>
+								{% endif %}
 
+							</div>
+						{% endif %}
+					</{{slickSlideElement}}>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+	{% endif %}
 
 
-    {##
-    # JavaScript
-    #}    
-    {% if __SELF__.property('includeJavaScript') %}
-        <script type="text/javascript">
-            var {{ str_camel(__SELF__.alias) }}Settings = {
-                {{ __SELF__.property('accessibility') == blank ? '//' : '' }}    accessibility:      Boolean( {{ __SELF__.property('accessibility') }} ) === true ,
-                {{ __SELF__.property('adaptiveHeight') == blank ? '//' : '' }}   adaptiveHeight:     Boolean( {{ __SELF__.property('adaptiveHeight') }} ) === true,
-                {{ __SELF__.property('autoplay') == blank ? '//' : '' }}         autoplay:           Boolean( {{ __SELF__.property('autoplay') }} ) === true,
-                {{ __SELF__.property('autoplaySpeed') == blank ? '//' : '' }}    autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),
-                {{ __SELF__.property('arrows') == blank ? '//' : '' }}           arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true,
-                {{ __SELF__.property('asNavFor') == blank ? '//' : '' }}         asNavFor:           String("{{ __SELF__.property('asNavFor') }}"),
-                {{ __SELF__.property('appendArrows') == blank ? '//' : '' }}     appendArrows:       {{ __SELF__.property('appendArrows') | raw}},
-                {{ __SELF__.property('appendDots') == blank ? '//' : '' }}       appendDots:         {{ __SELF__.property('appendDots') | raw}},
-                {{ __SELF__.property('prevArrow') == blank ? '//' : '' }}        prevArrow:          String('{{ __SELF__.property("prevArrow") | raw}}'),
-                {{ __SELF__.property('nextArrow') == blank ? '//' : '' }}        nextArrow:          String('{{ __SELF__.property("nextArrow") | raw}}'),
-                {{ __SELF__.property('centerMode') == blank ? '//' : '' }}       centerMode:         Boolean("{{ __SELF__.property('accessibility') }}") === true,
-                {{ __SELF__.property('centerPadding') == blank ? '//' : '' }}    centerPadding:      String("{{__SELF__.property('centerPadding')}}"),
-                {{ __SELF__.property('cssEase') == blank ? '//' : '' }}          cssEase:            String("{{__SELF__.property('cssEase')}}"),
-                {{ __SELF__.property('customPaging') == blank ? '//' : '' }}     customPaging:       {{__SELF__.property('customPaging') | raw}} ,
-                {{ __SELF__.property('dots') == blank ? '//' : '' }}             dots:               Boolean( {{ __SELF__.property('dots') }} ) === true,
-                {{ __SELF__.property('dotsClass') == blank ? '//' : '' }}        dotsClass:          String("{{__SELF__.property('dotsClass')}}"),
-                {{ __SELF__.property('draggable') == blank ? '//' : '' }}        draggable:          Boolean( {{ __SELF__.property('draggable') }} ) === true,
-                {{ __SELF__.property('fade') == blank ? '//' : '' }}             fade:               Boolean( {{ __SELF__.property('fade') }} ) === true,
-                {{ __SELF__.property('focusOnSelect') == blank ? '//' : '' }}    focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true,
-                {{ __SELF__.property('easing') == blank ? '//' : '' }}           easing:             String("{{__SELF__.property('easing')}}"),
-                {{ __SELF__.property('edgeFriction') == blank ? '//' : '' }}     edgeFriction:       parseFloat({{__SELF__.property('edgeFriction')}}),
-                {{ __SELF__.property('infinite') == blank ? '//' : '' }}         infinite:           Boolean( {{ __SELF__.property('infinite') }} ) === true,
-                {{ __SELF__.property('initialSlide') == blank ? '//' : '' }}     initialSlide:       Number( {{ __SELF__.property('initialSlide') }} ),
-                {{ __SELF__.property('lazyLoad') == blank ? '//' : '' }}         lazyLoad:           String("{{__SELF__.property('lazyLoad')}}"),
-                {{ __SELF__.property('mobileFirst') == blank ? '//' : '' }}      mobileFirst:        Boolean( {{ __SELF__.property('mobileFirst') }} ) === true,
-                {{ __SELF__.property('pauseOnFocus') == blank ? '//' : '' }}     pauseOnFocus:       Boolean( {{ __SELF__.property('pauseOnFocus') }} ) === true,
-                {{ __SELF__.property('pauseOnHover') == blank ? '//' : '' }}     pauseOnHover:       Boolean( {{ __SELF__.property('pauseOnHover') }} ) === true,
-                {{ __SELF__.property('pauseOnDotsHover') == blank ? '//' : '' }} pauseOnDotsHover:   Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true,
-                {{ __SELF__.property('respondTo') == blank ? '//' : '' }}        respondTo:          String("{{__SELF__.property('respondTo')}}"),
-                {{ __SELF__.property('responsive') == blank ? '//' : '' }}       responsive:         {{__SELF__.property('responsive') | raw}},
-                {{ __SELF__.property('rows') == blank ? '//' : '' }}             rows:               Number( {{ __SELF__.property('rows') }} ),
-                {{ __SELF__.property('slide') == blank ? '//' : '' }}            slide:              String("{{__SELF__.property('slide')}}"),
-                {{ __SELF__.property('slidesPerRow') == blank ? '//' : '' }}     slidesPerRow:       Number( {{ __SELF__.property('slidesPerRow') }} ),
-                {{ __SELF__.property('slidesToShow') == blank ? '//' : '' }}     slidesToShow:       Number( {{ __SELF__.property('slidesToShow') }} ),
-                {{ __SELF__.property('slidesToScroll') == blank ? '//' : '' }}   slidesToScroll:     Number( {{ __SELF__.property('slidesToScroll') }} ),
-                {{ __SELF__.property('speed') == blank ? '//' : '' }}            speed:              Number( {{ __SELF__.property('speed') }} ),
-                {{ __SELF__.property('swipe') == blank ? '//' : '' }}            swipe:              Boolean( {{ __SELF__.property('swipe') }} ) === true,
-                {{ __SELF__.property('swipeToSlide') == blank ? '//' : '' }}     swipeToSlide:       Boolean( {{ __SELF__.property('swipeToSlide') }} ) === true,
-                {{ __SELF__.property('touchMove') == blank ? '//' : '' }}        touchMove:          Boolean( {{ __SELF__.property('touchMove') }} ) === true,
-                {{ __SELF__.property('touchThreshold') == blank ? '//' : '' }}   touchThreshold:     Number( {{ __SELF__.property('touchThreshold') }} ),
-                {{ __SELF__.property('useCSS') == blank ? '//' : '' }}           useCSS:             Boolean( {{ __SELF__.property('useCSS') }} ) === true,
-                {{ __SELF__.property('useTransform') == blank ? '//' : '' }}     useTransform:       Boolean( {{ __SELF__.property('useTransform') }} ) === true,
-                {{ __SELF__.property('variableWidth') == blank ? '//' : '' }}    variableWidth:      Boolean( {{ __SELF__.property('variableWidth') }} ) === true,
-                {{ __SELF__.property('vertical') == blank ? '//' : '' }}         vertical:           Boolean( {{ __SELF__.property('vertical') }} ) === true,
-                {{ __SELF__.property('verticalSwiping') == blank ? '//' : '' }}  verticalSwiping:    Boolean( {{ __SELF__.property('verticalSwiping') }} ) === true,
-                {{ __SELF__.property('rtl') == blank ? '//' : '' }}              rtl:                Boolean( {{ __SELF__.property('rtl') }} ) === true,
-                {{ __SELF__.property('waitForAnimate') == blank ? '//' : '' }}   waitForAnimate:     Boolean( {{ __SELF__.property('waitForAnimate') }} ) === true,
-                {{ __SELF__.property('zIndex') == blank ? '//' : '' }}           zIndex:             Number( {{ __SELF__.property('zIndex') }}),
-            };
 
 
-            var $slider = null;
+	{##
+	# JavaScript
+	#}
+	{% if __SELF__.property('includeJavaScript') %}
+		<script type="text/javascript">
+
+			/**
+			* INIT
+			*/
+			var {{ str_camel(__SELF__.alias) }}Init = function(selector) {
+				
+				console.log("INIT");
+				
+				var slideshow = {
+					slideshow.$slider: null,
+					settings: null,
+					videoSlideSelector: null,
+					imageSlideSelector: null,
+					slides: {
+						length: {{__SELF__.slideshow.slides|length}},
+					}
+				};
+								
+				var playingVideo = null;
+
+                slideshow.settings = {
+                    {{ __SELF__.property('accessibility') == blank ? '//' : '' }}    accessibility:      Boolean( {{ __SELF__.property('accessibility') }} ) === true ,
+                    {{ __SELF__.property('adaptiveHeight') == blank ? '//' : '' }}   adaptiveHeight:     Boolean( {{ __SELF__.property('adaptiveHeight') }} ) === true,
+                    {{ __SELF__.property('autoplay') == blank ? '//' : '' }}         autoplay:           Boolean( {{ __SELF__.property('autoplay') }} ) === true,
+                    {{ __SELF__.property('autoplaySpeed') == blank ? '//' : '' }}    autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),
+                    {{ __SELF__.property('arrows') == blank ? '//' : '' }}           arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true,
+                    {{ __SELF__.property('asNavFor') == blank ? '//' : '' }}         asNavFor:           String("{{ __SELF__.property('asNavFor') }}"), 
+                    {{ __SELF__.property('appendArrows') == blank ? '//' : '' }}     appendArrows:       {{ __SELF__.property('appendArrows') | raw}},
+                    {{ __SELF__.property('appendDots') == blank ? '//' : '' }}       appendDots:         {{ __SELF__.property('appendDots') | raw}},
+                    {{ __SELF__.property('prevArrow') == blank ? '//' : '' }}        prevArrow:          String('{{ __SELF__.property("prevArrow") | raw}}'),
+                    {{ __SELF__.property('nextArrow') == blank ? '//' : '' }}        nextArrow:          String('{{ __SELF__.property("nextArrow") | raw}}'),
+                    {{ __SELF__.property('centerMode') == blank ? '//' : '' }}       centerMode:         Boolean("{{ __SELF__.property('accessibility') }}") === true,
+                    {{ __SELF__.property('centerPadding') == blank ? '//' : '' }}    centerPadding:      String("{{__SELF__.property('centerPadding')}}"),
+                    {{ __SELF__.property('cssEase') == blank ? '//' : '' }}          cssEase:            String("{{__SELF__.property('cssEase')}}"),
+                    {{ __SELF__.property('customPaging') == blank ? '//' : '' }}     customPaging:       {{__SELF__.property('customPaging') | raw}} ,
+                    {{ __SELF__.property('dots') == blank ? '//' : '' }}             dots:               Boolean( {{ __SELF__.property('dots') }} ) === true,
+                    {{ __SELF__.property('dotsClass') == blank ? '//' : '' }}        dotsClass:          String("{{__SELF__.property('dotsClass')}}"),
+                    {{ __SELF__.property('draggable') == blank ? '//' : '' }}        draggable:          Boolean( {{ __SELF__.property('draggable') }} ) === true,
+                    {{ __SELF__.property('fade') == blank ? '//' : '' }}             fade:               Boolean( {{ __SELF__.property('fade') }} ) === true,
+                    {{ __SELF__.property('focusOnSelect') == blank ? '//' : '' }}    focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true,
+                    {{ __SELF__.property('easing') == blank ? '//' : '' }}           easing:             String("{{__SELF__.property('easing')}}"),
+                    {{ __SELF__.property('edgeFriction') == blank ? '//' : '' }}     edgeFriction:       parseFloat({{__SELF__.property('edgeFriction')}}),
+                    {{ __SELF__.property('infinite') == blank ? '//' : '' }}         infinite:           Boolean( {{ __SELF__.property('infinite') }} ) === true,
+                    {{ __SELF__.property('initialSlide') == blank ? '//' : '' }}     initialSlide:       Number( {{ __SELF__.property('initialSlide') }} ),
+                    {{ __SELF__.property('lazyLoad') == blank ? '//' : '' }}         lazyLoad:           String("{{__SELF__.property('lazyLoad')}}"),
+                    {{ __SELF__.property('mobileFirst') == blank ? '//' : '' }}      mobileFirst:        Boolean( {{ __SELF__.property('mobileFirst') }} ) === true,
+                    {{ __SELF__.property('pauseOnFocus') == blank ? '//' : '' }}     pauseOnFocus:       Boolean( {{ __SELF__.property('pauseOnFocus') }} ) === true,
+                    {{ __SELF__.property('pauseOnHover') == blank ? '//' : '' }}     pauseOnHover:       Boolean( {{ __SELF__.property('pauseOnHover') }} ) === true,
+                    {{ __SELF__.property('pauseOnDotsHover') == blank ? '//' : '' }} pauseOnDotsHover:   Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true,
+                    {{ __SELF__.property('respondTo') == blank ? '//' : '' }}        respondTo:          String("{{__SELF__.property('respondTo')}}"),
+                    {{ __SELF__.property('responsive') == blank ? '//' : '' }}       responsive:         {{__SELF__.property('responsive') | raw}},       
+                    {{ __SELF__.property('rows') == blank ? '//' : '' }}             rows:               Number( {{ __SELF__.property('rows') }} ),
+                    {{ __SELF__.property('slide') == blank ? '//' : '' }}            slide:              String("{{__SELF__.property('slide')}}"),
+                    {{ __SELF__.property('slidesPerRow') == blank ? '//' : '' }}     slidesPerRow:       Number( {{ __SELF__.property('slidesPerRow') }} ),
+                    {{ __SELF__.property('slidesToShow') == blank ? '//' : '' }}     slidesToShow:       Number( {{ __SELF__.property('slidesToShow') }} ),
+                    {{ __SELF__.property('slidesToScroll') == blank ? '//' : '' }}   slidesToScroll:     Number( {{ __SELF__.property('slidesToScroll') }} ),
+                    {{ __SELF__.property('speed') == blank ? '//' : '' }}            speed:              Number( {{ __SELF__.property('speed') }} ),
+                    {{ __SELF__.property('swipe') == blank ? '//' : '' }}            swipe:              Boolean( {{ __SELF__.property('swipe') }} ) === true,
+                    {{ __SELF__.property('swipeToSlide') == blank ? '//' : '' }}     swipeToSlide:       Boolean( {{ __SELF__.property('swipeToSlide') }} ) === true,
+                    {{ __SELF__.property('touchMove') == blank ? '//' : '' }}        touchMove:          Boolean( {{ __SELF__.property('touchMove') }} ) === true,
+                    {{ __SELF__.property('touchThreshold') == blank ? '//' : '' }}   touchThreshold:     Number( {{ __SELF__.property('touchThreshold') }} ),
+                    {{ __SELF__.property('useCSS') == blank ? '//' : '' }}           useCSS:             Boolean( {{ __SELF__.property('useCSS') }} ) === true,
+                    {{ __SELF__.property('useTransform') == blank ? '//' : '' }}     useTransform:       Boolean( {{ __SELF__.property('useTransform') }} ) === true,
+                    {{ __SELF__.property('variableWidth') == blank ? '//' : '' }}    variableWidth:      Boolean( {{ __SELF__.property('variableWidth') }} ) === true,
+                    {{ __SELF__.property('vertical') == blank ? '//' : '' }}         vertical:           Boolean( {{ __SELF__.property('vertical') }} ) === true,
+                    {{ __SELF__.property('verticalSwiping') == blank ? '//' : '' }}  verticalSwiping:    Boolean( {{ __SELF__.property('verticalSwiping') }} ) === true,
+                    {{ __SELF__.property('rtl') == blank ? '//' : '' }}              rtl:                Boolean( {{ __SELF__.property('rtl') }} ) === true,
+                    {{ __SELF__.property('waitForAnimate') == blank ? '//' : '' }}   waitForAnimate:     Boolean( {{ __SELF__.property('waitForAnimate') }} ) === true,
+                    {{ __SELF__.property('zIndex') == blank ? '//' : '' }}           zIndex:             Number( {{ __SELF__.property('zIndex') }}),
+                    // custom slideshow plugin settings
+                    {{ __SELF__.property('nextSlideOnEnd') == blank ? '//' : '' }}   nextSlideOnEnd:     Boolean( {{__SELF__.property('nextSlideOnEnd')}} ),
+                    {{ __SELF__.property('autoplayOnShow') == blank ? '//' : '' }}   autoplayOnShow:     Boolean( {{__SELF__.property('autoplayOnShow')}} ),     
+                };
+
+				/**
+				*  Resume Slideshow after stop
+				*/
+				slideshow.resume_slideshow = function () {
+					var currentSlideType = $(".slick-current").data("slide-type");
+					console.log('resume_slideshow called: ', currentSlideType);
+					handleSlideType( currentSlideType );
+				}
 
 
-            /**
-            *  Switch to next slide after video ends, and rewinds it.
-            *	( eventhandler function which gets called after video 'ended' )
-            */		
-            var onVideoEnd = function() {
-                console.log("onVideoEnd called");
-                var theVideo = $(".slick-current video");
-                $slider.slick("slickNext");
-                    theVideo.off('ended', onVideoEnd);
-                    theVideo[0].pause();
-                    theVideo[0].currentTime = 0;
-            }
+				/**
+				*  Stop Slideshow
+				*  ( stop video, remove event handler, stop slick )
+				*/
+				slideshow.stop_slideshow = function() {
+					console.log('stop slideshow');
+					slideshow.$slider.slick('slickPause');
+					var theVideo = $(".slick-current video");
+						theVideo.off('ended', onVideoEnd);
+						theVideo[0].pause();
+						theVideo[0].currentTime = 0;
+				}
 
 
-            /**
-            *  Start Video Playback
-            *  ( start video and add event handler see:  onVideoEnd )
-            */		
-            var startVideoPlayback = function() {
-                console.log("startVideoPlayback called");
-                var theVideo = $(".slick-current video");
-                    theVideo[0].play();
-                    theVideo.on('ended', onVideoEnd );
-                $slider.slick('slickPause'); // pause slideshow until video ends
-            }
+				/**
+				*  Handle Slide Type
+				*  ( do something depending on the current slide type )
+				*/
+				slideshow.handleSlideType = function(currentSlideType) {
+					switch( currentSlideType )
+					{
+						case 'video': {
+							startVideoPlayback();
+						};break;
+
+						case 'image': {
+							// console.log('afterChange/ case: image');
+							slideshow.$slider.slick('slickSetOption', 'autoplay', true,true);
+						};break;
+					}
+				}
 
 
-            /**
-            *  Handle Slide Type
-            *  ( do something depending on the current slide type )
-            */
-            var handleSlideType = function(currentSlideType) {
-                switch( currentSlideType ) 
-                {
-                    case 'video': {
-                        startVideoPlayback();
-                    };break;
-
-                    case 'image': {
-                        // console.log('afterChange/ case: image');
-                        $slider.slick('slickSetOption', 'autoplay', true,true);
-                    };break;
-                }
-            }
+				/**
+				*  Start Video Playback
+				*  ( start video and add event handler see:  onVideoEnd )
+				*/
+				slideshow.startVideoPlayback = function() {
+					console.log("startVideoPlayback called");
+					var theVideo = $(".slick-current video");
+						theVideo[0].play();
+						theVideo.on('ended', onVideoEnd );
+					slideshow.$slider.slick('slickPause'); // pause slideshow until video ends
+				}
 
 
-            /**
-            *  Stop Slideshow
-            *  ( stop video, remove event handler, stop slick )
-            */		
-            var stop_slideshow = function() {
-                console.log('stop slideshow');
-                $slider.slick('slickPause');
-                // var theId = '{{ str_camel(__SELF__.alias) }}S-slide{{autoplayIndex}}-video';
-                // console.log("theVideo with id", theId);
-                // var theVideo = $("#"+theId);
-                var theVideo = $(".slick-current video");
-                    theVideo.off('ended', onVideoEnd);
-                    theVideo[0].pause();
-                    theVideo[0].currentTime = 0;
-            }
-            
+				/**
+				*  Switch to next slide after video ends, and rewinds it.
+				*	( eventhandler function which gets called after video 'ended' )
+				*/
+				slideshow.onVideoEnd = function() {
+					console.log("onVideoEnd called");
+					var theVideo = $(".slick-current video");
+					slideshow.$slider.slick("slickNext");
+						theVideo.off('ended', onVideoEnd);
+						theVideo[0].pause();
+						theVideo[0].currentTime = 0;
+				}
 
-            /**
-            *  Resume Slideshow after stop
-            */
-            var resume_slideshow = function () {
-                var currentSlideType = $(".slick-current").data("slide-type");
-                console.log('resume_slideshow called: ', currentSlideType);
-                handleSlideType( currentSlideType );
-            }
-            
+				if(!selector) {
+					slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
+				} else {
+					slideshow.$slider = $(selector);
+				}
 
-            /**
-            * INIT
-            */
-            var {{ str_camel(__SELF__.alias) }}Init = function(selector) {
-                
-                if(!selector) {
-                    $slider = $('#{{ str_camel(__SELF__.alias) }}');
-                } else {
-                    $slider = $(selector);
-                }
-                
-                // stop here if slick is already initialized
-                if( $slider.hasClass('slick-initialized') ) {
-                    return false;
-                }
-                
-                    
-                /**
-                * Event afterChange
-                */
-                $slider.on('afterChange', function( event, slick ) {
-                    // TODO use slick param oder this to make shure you select the right slideshow
-                    var currentSlideType = $(".slick-current").data("slide-type");
-                    handleSlideType(currentSlideType);
-                });
-                
-                $slider.on('jumplink_slideshow_stop', stop_slideshow);
-                $slider.on('jumplink_resume_slideshow', resume_slideshow);
-                
-                // main initialisation
-                $slider.slick( {{ str_camel(__SELF__.alias) }}Settings );
+				// stop here if slick is already initialized
+				if( slideshow.$slider.hasClass('slick-initialized') ) {
+					return false;
+				}
 
-                resume_slideshow();
 
-                console.log("init()")
-            }
-            
-        </script>
-    {% endif %}  
+				/**
+				* Event afterChange
+				*/
+				slideshow.$slider.on('afterChange', function( event, slick ) {
+					// TODO use slick param oder this to make shure you select the right slideshow
+					var currentSlideType = $(".slick-current").data("slide-type");
+					handleSlideType(currentSlideType);
+				});
+
+				slideshow.$slider.on('jumplink_slideshow_stop', stop_slideshow);
+				slideshow.$slider.on('jumplink_resume_slideshow', resume_slideshow);
+
+				// main initialisation
+				slideshow.$slider.slick( slideshow.settings );
+
+				resume_slideshow();
+                // return slideshow object to make properties and methods public
+                return slideshow;
+
+
+			}
+			{% if __SELF__.property('INITmanually') %}
+				var currentSlideshow = {{ str_camel(__SELF__.alias) }}Init();
+			{% endif %}
+		</script>
+	{% endif %}
 
 {% endif %}

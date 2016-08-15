@@ -25,6 +25,12 @@
                     'placeholder' => 'Select slideshow',
                 ],
                 
+                'INITmanually' => [
+                    'title' => 'INITmanually',
+                    'description' => 'Manually initialise Slideshow',
+                    'placeholder' => 'false',
+                ],
+
                 'includeHTML' => [
                     'title' => 'includeHTML',
                     'description' => 'Include HTML part',
