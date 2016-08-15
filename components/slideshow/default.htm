@@ -33,7 +33,7 @@
                             <div class="carousel-video-wrapper">
                                 {% if slide.aspect_ratio == 'custom' %}
                                     <div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
                                             {% if slide.mp4 != blank %}
                                                 <source src="{{slide.mp4.path}}" type="video/mp4">
                                             {% endif %}
@@ -47,7 +47,7 @@
                                     </div>
                                 {% elseif slide.aspect_ratio != blank %}
                                     <div class="box {{slide.aspect_ratio}}">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
                                             {% if slide.mp4 != blank %}
                                                 <source src="{{slide.mp4.path}}" type="video/mp4">
                                             {% endif %}
@@ -61,7 +61,7 @@
                                     </div>
                                 {% elseif __SELF__.property('aspectRatio') == 'custom' %}
                                     <div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
                                             {% if slide.mp4 != blank %}
                                                 <source src="{{slide.mp4.path}}" type="video/mp4">
                                             {% endif %}
@@ -75,7 +75,7 @@
                                     </div>
                                 {% elseif __SELF__.property('aspectRatio') != blank %}
                                     <div class="box {{ __SELF__.property('aspectRatio') }}">
-                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                        <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
                                             {% if slide.mp4 != blank %}
                                                 <source src="{{slide.mp4.path}}" type="video/mp4">
                                             {% endif %}
@@ -88,7 +88,7 @@
                                         </video>
                                     </div>
                                 {% else %}
-                                    <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload autoplay muted width="100%" poster="{{ slide.image.path }}">
+                                    <video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
                                         {% if slide.mp4 != blank %}
                                             <source src="{{slide.mp4.path}}" type="video/mp4">
                                         {% endif %}
@@ -212,6 +212,7 @@
             *	( eventhandler function which gets called after video 'ended' )
             */		
             var onVideoEnd = function() {
+                console.log("onVideoEnd called");
                 var theVideo = $(".slick-current video");
                 $slider.slick("slickNext");
                     theVideo.off('ended', onVideoEnd);
