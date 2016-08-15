@@ -24,6 +24,19 @@
                     'description' => 'This value can be changed depending on the identifier used in the URL of this page. See the plugin\'s manual for more information.',
                     'placeholder' => 'Select slideshow',
                 ],
+                
+                'includeHTML' => [
+                    'title' => 'includeHTML',
+                    'description' => 'Include HTML part',
+                    'placeholder' => 'true',
+                ],
+
+                'includeJavaScript' => [
+                    'title' => 'includeJavaScript',
+                    'description' => 'Include JavaScript part',
+                    'placeholder' => 'true',
+                ],
+
                 'number_of_slide' => [
                     'title' => 'Slides limit',
                     'description' => 'Maximal number of slides to display',

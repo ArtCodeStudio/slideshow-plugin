@@ -29,6 +29,21 @@ class Slideshow extends ComponentBase
                 'placeholder'   => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.id.placeholder'),
                 'type'          => 'dropdown'
             ],
+            
+            'includeHTML' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.includeHTML.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.includeHTML.description',
+                'type'              => 'checkbox',
+                'default'           => 1,
+                'group'             => 'Asset Injection'
+            ],
+            'includeJavaScript' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.includeJavaScript.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.includeJavaScript.description',
+                'type'              => 'checkbox',
+                'default'           => 1,
+                'group'             => 'Asset Injection'
+            ],
             'injectSlickAssets' => [
                 'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.title',
                 'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.injectSlickAssets.description',
@@ -216,7 +231,7 @@ class Slideshow extends ComponentBase
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.centerPadding.description',
                 'placeholder' => Lang::get('jumplink.slideshow::lang.components.slideshow.properties.centerPadding.placeholder'),
                 'type' => 'string',
-                'default' => '', // '50px',
+                'default' => '0px', 
                 'group' => 'Slide display'
             ],
 
