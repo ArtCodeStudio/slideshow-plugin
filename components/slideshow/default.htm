@@ -29,7 +29,9 @@
 							{% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %}
 								{% set autoplayIndex = loop.index %}
 							{% endif %}
-
+{#
+Video scant have with in %, set via js in px ?
+#}
 							<div class="carousel-video-wrapper">
 								{% if slide.aspect_ratio == 'custom' %}
 									<div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
@@ -324,6 +326,10 @@
 					slideshow.handleSlideType(currentSlideType);
 				});
 
+				// Global Events for all instances...
+				$(document).on('jumplink_slideshow_stop', slideshow.stop_slideshow);
+
+				// ...just for the current Instance
 				slideshow.$slider.on('jumplink_slideshow_stop', slideshow.stop_slideshow);
 				slideshow.$slider.on('jumplink_resume_slideshow', slideshow.resume_slideshow);
 
