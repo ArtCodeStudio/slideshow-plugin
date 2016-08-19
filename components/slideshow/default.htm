@@ -22,8 +22,8 @@
 					{% else %}
 						{% set slide_type = 'image'%}
 					{% endif %}
-
-					<{{slickSlideElement}} href="{{ slide.link }}" id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
+	
+					<{{slickSlideElement}} {% if(slide.link != '') %} href="{{ slide.link }}"{% endif %} id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
 						{% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %}
 
 							{% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %}
@@ -156,9 +156,9 @@
 			/**
 			* INIT
 			*/
-			var {{ str_camel(__SELF__.alias) }}Init = function(selector) {
+			var {{ str_camel(__SELF__.alias) }}Init = function (selector) {
 				
-				console.log("INIT");
+				// console.log("INIT");
 				
 				var slideshow = {
 					$slider: null,
@@ -247,7 +247,7 @@
 				*/
 				slideshow.resume_slideshow = function () {
 					var currentSlideType = $(".slick-current").data("slide-type");
-					console.log('resume_slideshow called: ', currentSlideType);
+					// console.log('resume_slideshow called: ', currentSlideType);
 					slideshow.handleSlideType( currentSlideType );
 				}
 
@@ -256,9 +256,8 @@
 				*  Stop Slideshow
 				*  ( stop video, remove event handler, stop slick )
 				*/
-				slideshow.stop_slideshow = function() {
+				slideshow.stop_slideshow = function () {
 					var currentSlideType = $(".slick-current").data("slide-type");
-					// console.log('stop slideshow', currentSlideType);
 					slideshow.$slider.slick('slickPause');
 					if(currentSlideType === 'video'){
 						var $theVideo = $(".slick-current video");
@@ -273,7 +272,7 @@
 				*  Handle Slide Type
 				*  ( do something depending on the current slide type )
 				*/
-				slideshow.handleSlideType = function(currentSlideType) {
+				slideshow.handleSlideType = function (currentSlideType) {
 					switch( currentSlideType )
 					{
 						case 'video': {
@@ -292,8 +291,8 @@
 				*  Start Video Playback
 				*  ( start video and add event handler see:  onVideoEnd )
 				*/
-				slideshow.startVideoPlayback = function() {
-					console.log("startVideoPlayback called");
+				slideshow.startVideoPlayback = function () {
+					// console.log("startVideoPlayback called");
 					var $theVideo = $(".slick-current video");
 						$theVideo[0].play();
 						$theVideo.on('ended', slideshow.onVideoEnd );
@@ -305,8 +304,8 @@
 				*  Switch to next slide after video ends, and rewinds it.
 				*	( eventhandler function which gets called after video 'ended' )
 				*/
-				slideshow.onVideoEnd = function() {
-					console.log("onVideoEnd called");
+				slideshow.onVideoEnd = function () {
+					// console.log("onVideoEnd called");
 					var $theVideo = $(".slick-current video");
 					slideshow.$slider.slick("slickNext");
 						$theVideo.off('ended',  slideshow.onVideoEnd);
@@ -319,7 +318,7 @@
 				/**
 				* Event afterChange
 				*/
-				slideshow.$slider.on('afterChange', function( event, slick ) {
+				slideshow.$slider.on('afterChange', function ( event, slick ) {
 					// TODO use slick param oder this to make shure you select the right slideshow
 					var currentSlideType = $(".slick-current").data("slide-type");
 					slideshow.handleSlideType(currentSlideType);
