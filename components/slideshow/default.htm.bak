@@ -35,7 +35,7 @@ Videos can't have with in %, set via js in px ?
 							<div class="carousel-video-wrapper">
 								{% if slide.aspect_ratio == 'custom' %}
 									<div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;">
-										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
 											{% if slide.mp4 != blank %}
 												<source src="{{slide.mp4.path}}" type="video/mp4">
 											{% endif %}
@@ -49,7 +49,7 @@ Videos can't have with in %, set via js in px ?
 									</div>
 								{% elseif slide.aspect_ratio != blank %}
 									<div class="box {{slide.aspect_ratio}}">
-										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
 											{% if slide.mp4 != blank %}
 												<source src="{{slide.mp4.path}}" type="video/mp4">
 											{% endif %}
@@ -63,7 +63,7 @@ Videos can't have with in %, set via js in px ?
 									</div>
 								{% elseif __SELF__.property('aspectRatio') == 'custom' %}
 									<div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
-										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
 											{% if slide.mp4 != blank %}
 												<source src="{{slide.mp4.path}}" type="video/mp4">
 											{% endif %}
@@ -77,7 +77,7 @@ Videos can't have with in %, set via js in px ?
 									</div>
 								{% elseif __SELF__.property('aspectRatio') != blank %}
 									<div class="box {{ __SELF__.property('aspectRatio') }}">
-										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
 											{% if slide.mp4 != blank %}
 												<source src="{{slide.mp4.path}}" type="video/mp4">
 											{% endif %}
@@ -90,7 +90,7 @@ Videos can't have with in %, set via js in px ?
 										</video>
 									</div>
 								{% else %}
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ slide.image.path }}">
 										{% if slide.mp4 != blank %}
 											<source src="{{slide.mp4.path}}" type="video/mp4">
 										{% endif %}
@@ -117,15 +117,15 @@ Videos can't have with in %, set via js in px ?
 							<div class="carousel-image-wrapper">
 
 								{% if slide.aspect_ratio == 'custom' %}
-									<div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
+									<div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
 								{% elseif slide.aspect_ratio != blank %}
-									<div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
+									<div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ slide.image.path }});" alt="{{ slide.image.path }}"></div>
 								{% elseif __SELF__.property('aspectRatio') == 'custom' %}
-									<div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
+									<div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
 								{% elseif __SELF__.property('aspectRatio') != blank %}
-									<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
+									<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ slide.image.path }});" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
 								{% else %}
-									<div class="img-responsive img-fluid" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
+									<div class="img-responsive img-fluid" src="{{ slide.image.path }}" alt="{{ slide.image.path }}"></div>
 								{% endif %}
 
 								{% if slide.name != blank or slide.description != blank  %}
@@ -160,7 +160,7 @@ Videos can't have with in %, set via js in px ?
 			*/
 			var {{ str_camel(__SELF__.alias) }}Init = function (selector) {
 				
-				// console.log('{{ str_camel(__SELF__.alias) }}Init', 'called');
+				// console.log("INIT");
 				
 				var slideshow = {
 					$slider: null,
@@ -171,26 +171,22 @@ Videos can't have with in %, set via js in px ?
 						length: {{__SELF__.slideshow.slides|length}},
 					}
 				};
-				// console.log(selector)		
+								
 				var playingVideo = null;
                
 			    if( selector ) {
                     slideshow.$slider = $(selector);
                     slideshow.videoSlideSelector = selector+'-slide-[index]-video';
                     slideshow.imageSlideSelector = selector+'-slide-[index]-image';
-                    	
+                    
                 } else {
                     slideshow.$slider = $('#{{ str_camel(__SELF__.alias) }}');
                     slideshow.videoSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-video';
                     slideshow.imageSlideSelector = '#{{ str_camel(__SELF__.alias) }}-slide-[index]-image';
                 }
 
-
                 // stop here if slick is already initialized
-                if ( slideshow.$slider.hasClass('slick-initialized') ) {
-					// console.log('already initialized');
-					// slideshow.$slider.slick('unslick').slick('reinit');
-					//slideshow.$slider.slick('setPosition');
+                if( slideshow.$slider.hasClass('slick-initialized') ) {
                     return false;
                 }
 
@@ -201,7 +197,7 @@ Videos can't have with in %, set via js in px ?
                     {{ __SELF__.property('autoplaySpeed') == blank ? '//' : '' }}    autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),
                     {{ __SELF__.property('arrows') == blank ? '//' : '' }}           arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true,
                     {{ __SELF__.property('asNavFor') == blank ? '//' : '' }}         asNavFor:           String("{{ __SELF__.property('asNavFor') }}"), 
-                    {{ __SELF__.property('appendArrows') == blank ? '//' : '' }}     appendArrows:       String("{{ __SELF__.property('appendArrows') | raw}}"),
+                    {{ __SELF__.property('appendArrows') == blank ? '//' : '' }}     appendArrows:       {{ __SELF__.property('appendArrows') | raw}},
                     {{ __SELF__.property('appendDots') == blank ? '//' : '' }}       appendDots:         {{ __SELF__.property('appendDots') | raw}},
                     {{ __SELF__.property('prevArrow') == blank ? '//' : '' }}        prevArrow:          String('{{ __SELF__.property("prevArrow") | raw}}'),
                     {{ __SELF__.property('nextArrow') == blank ? '//' : '' }}        nextArrow:          String('{{ __SELF__.property("nextArrow") | raw}}'),
@@ -338,11 +334,11 @@ Videos can't have with in %, set via js in px ?
 
 				// main initialisation
 				slideshow.$slider.slick( slideshow.settings );
-							
-					 //slideshow.$slider.slick('setPosition');
+
 				slideshow.resume_slideshow();
                 // return slideshow object to make properties and methods public
                 return slideshow;
+
 
 			}
 			{% if __SELF__.property('initAuto') %}

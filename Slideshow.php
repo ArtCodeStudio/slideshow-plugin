@@ -352,7 +352,7 @@ class Slideshow extends ComponentBase
                 'type' => 'dropdown',
                 'default' => '', //'ondemand',
                 'options' => ['' => 'none', 'ondemand' => 'on demand', 'progressive' => 'progressive'],
-                'group' => 'Image loading'
+                'group' => 'Slide display'
             ],
             'mobileFirst' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.mobileFirst.title',
@@ -644,16 +644,16 @@ class Slideshow extends ComponentBase
 
     public function getResizedImage($image)
     {
-        if ( !$image )
+        if ( $image == null )
             return '';
         if ($this->property('useResize'))
         {
-            return $image->getThumb($this->thumbWidth, $this->thumbHeight, $this->thumbMode, $this->thumbQuality);
+            return $image->getThumb($this->thumbHeight, $this->thumbWidth, $this->thumbMode, $this->thumbQuality);
         }
         else return $image->getPath();
     }
 
-    public function onRender()
+    public function onRun()
     {
         $slideshowId = (int) $this->property('slideshow');
 
@@ -674,11 +674,7 @@ class Slideshow extends ComponentBase
         if ($this->property('useResize'))
         {
             $this->thumbWidth = intval($this->property('thumbWidth'));
-            if ($this->thumbWidth == 0)
-                $this->thumbWidth = "auto";
             $this->thumbHeight = intval($this->property('thumbHeight'));
-            if ($this->thumbHeight == 0)
-                $this->thumbHeight = "auto";
             $this->thumbMode = $this->property('thumbMode');
             $this->thumbQuality = intval($this->property('thumbQuality'));
             $this->thumbQuality = ($this->thumbQuality ? $this->thumbQuality : 100);

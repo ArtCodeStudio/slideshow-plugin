@@ -9,9 +9,9 @@ class BuilderTableUpdateJumplinkSlideshowSlides3 extends Migration
     {
         Schema::table('jumplink_slideshow_slides', function($table)
         {
-            $table->string('aspect_ratio');
-            $table->decimal('custom_ratio', 10, 5);
-            $table->string('caption_position');
+            $table->string('aspect_ratio')->nullable();
+            $table->decimal('custom_ratio', 10, 5)->nullable();
+            $table->string('caption_position')->nullable();
         });
     }
     
