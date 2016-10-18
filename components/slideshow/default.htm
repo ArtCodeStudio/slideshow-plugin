@@ -21,120 +21,86 @@
 							{% set slide_type = 'image'%} 
 						{% endif %}
 
-					<{{slickSlideElement}} {% if(slide.link !='' ) %} href="{{ slide.link }}" {% endif %} id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
-						
-						{% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %} 
-						
-						{% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %} 
-							{% set autoplayIndex = loop.index %} 
-						{% endif %} 
-
-						<div class="carousel-video-wrapper">
-							{% if slide.aspect_ratio == 'custom' %}
-								<div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;"> {# Videos can't have with in %, set via js in px ? #}
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
-										{% if slide.mp4 != blank %}
-											<source src="{{slide.mp4.path}}" type="video/mp4"> 
-										{% endif %} 
-										{% if slide.ogg != blank %}
-											<source src="{{slide.ogg.path}}" type="video/ogg"> 
-										{% endif %} {% if slide.webm != blank %}
-											<source src="{{slide.webm.path}}" type="video/webm"> 
-										{% endif %}
-									</video>
-								</div>
-							{% elseif slide.aspect_ratio != blank %}
-								<div class="box {{slide.aspect_ratio}}">
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
-										{% if slide.mp4 != blank %}
-											<source src="{{slide.mp4.path}}" type="video/mp4"> 
-										{% endif %} 
-										{% if slide.ogg != blank %}
-											<source src="{{slide.ogg.path}}" type="video/ogg"> 
-										{% endif %} 
-										{% if slide.webm != blank %}
-											<source src="{{slide.webm.path}}" type="video/webm"> 
-										{% endif %}
-									</video>
-								</div>
-							{% elseif __SELF__.property('aspectRatio') == 'custom' %}
-								<div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
-										{% if slide.mp4 != blank %}
-											<source src="{{slide.mp4.path}}" type="video/mp4"> 
-										{% endif %} 
-										{% if slide.ogg != blank %}
-											<source src="{{slide.ogg.path}}" type="video/ogg"> 
-										{% endif %} 
-										{% if slide.webm != blank %}
-											<source src="{{slide.webm.path}}" type="video/webm"> 
-										{% endif %}
-									</video>
-								</div>
-							{% elseif __SELF__.property('aspectRatio') != blank %}
-								<div class="box {{ __SELF__.property('aspectRatio') }}">
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
-										{% if slide.mp4 != blank %}
-											<source src="{{slide.mp4.path}}" type="video/mp4"> 
-										{% endif %} 
-										{% if slide.ogg != blank %}
-											<source src="{{slide.ogg.path}}" type="video/ogg"> 
-										{% endif %} 
-										{% if slide.webm != blank %}
-											<source src="{{slide.webm.path}}" type="video/webm"> 
-										{% endif %}
-									</video>
-								</div>
-							{% else %}
-								<div class="box">
-									<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
-										{% if slide.mp4 != blank %}
-											<source src="{{slide.mp4.path}}" type="video/mp4"> 
-										{% endif %} 
-										{% if slide.ogg != blank %}
-											<source src="{{slide.ogg.path}}" type="video/ogg"> 
-										{% endif %} 
-										{% if slide.webm != blank %}
-											<source src="{{slide.webm.path}}" type="video/webm"> 
-										{% endif %}
-									</video>
-								</div>
-							{% endif %} 
+						<{{slickSlideElement}} {% if(slide.link !='' ) %} href="{{ slide.link }}" {% endif %} id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}" class="slick-slide" data-slide-type="{{slide_type}}">
 							
-							{% if slide.name != blank or slide.description != blank %}
-								<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
-									<div class="carousel-caption-content">
-										<h2>{{ slide.name | raw }}</h2>
-										{{ slide.description | raw }}
-									</div>
-								</div>
-							{% endif %}
+							{% if slide.mp4 != blank or slide.webm != blank or slide.ogg != blank %} 
+							
+							{% if __SELF__.property('autoplayOnShow') and loop.index == (__SELF__.property('initialSlide') != blank ? __SELF__.property('initialSlide') + 1 : 1) %} 
+								{% set autoplayIndex = loop.index %} 
+							{% endif %} 
 
-						</div>
-						{% else %}
-							<div class="carousel-image-wrapper">
-
+							<div class="carousel-video-wrapper">
 								{% if slide.aspect_ratio == 'custom' %}
-									<div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
-											alt="{{ __SELF__.getResizedImage(slide.image) }}">
+									<div class="box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%;"> {# Videos can't have with in %, set via js in px ? #}
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4"> 
+											{% endif %} 
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg"> 
+											{% endif %} {% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm"> 
+											{% endif %}
+										</video>
 									</div>
 								{% elseif slide.aspect_ratio != blank %}
-									<div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
-											alt="{{ __SELF__.getResizedImage(slide.image) }}">
+									<div class="box {{slide.aspect_ratio}}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4"> 
+											{% endif %} 
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg"> 
+											{% endif %} 
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm"> 
+											{% endif %}
+										</video>
 									</div>
 								{% elseif __SELF__.property('aspectRatio') == 'custom' %}
-									<div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
-											src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+									<div class="box" style="padding-top: {{ 100.0 / __SELF__.property('customtRatio') }}%">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4"> 
+											{% endif %} 
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg"> 
+											{% endif %} 
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm"> 
+											{% endif %}
+										</video>
 									</div>
 								{% elseif __SELF__.property('aspectRatio') != blank %}
-									<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
-											src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+									<div class="box {{ __SELF__.property('aspectRatio') }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4"> 
+											{% endif %} 
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg"> 
+											{% endif %} 
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm"> 
+											{% endif %}
+										</video>
 									</div>
 								{% else %}
 									<div class="box">
-										<img class="img-responsive img-fluid" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
+											{% if slide.mp4 != blank %}
+												<source src="{{slide.mp4.path}}" type="video/mp4"> 
+											{% endif %} 
+											{% if slide.ogg != blank %}
+												<source src="{{slide.ogg.path}}" type="video/ogg"> 
+											{% endif %} 
+											{% if slide.webm != blank %}
+												<source src="{{slide.webm.path}}" type="video/webm"> 
+											{% endif %}
+										</video>
 									</div>
-								{% endif %}
+								{% endif %} 
+								
 								{% if slide.name != blank or slide.description != blank %}
 									<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
 										<div class="carousel-caption-content">
@@ -145,9 +111,43 @@
 								{% endif %}
 
 							</div>
-						{% endif %}
-				</{{slickSlideElement}}>
-				{% endif %} 
+							{% else %}
+								<div class="carousel-image-wrapper">
+
+									{% if slide.aspect_ratio == 'custom' %}
+										<div class="background-box" style="padding-top: {{ 100.0 / slide.custom_ratio}}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
+												alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										</div>
+									{% elseif slide.aspect_ratio != blank %}
+										<div class="background-box {{slide.aspect_ratio}}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
+												alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										</div>
+									{% elseif __SELF__.property('aspectRatio') == 'custom' %}
+										<div class="background-box" style="padding-top: {{ 100.0 / __SELF__.property('customRatio') }}%; background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
+												src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										</div>
+									{% elseif __SELF__.property('aspectRatio') != blank %}
+										<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
+												src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										</div>
+									{% else %}
+										<div class="box">
+											<img class="img-responsive img-fluid" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+										</div>
+									{% endif %}
+									{% if slide.name != blank or slide.description != blank %}
+										<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
+											<div class="carousel-caption-content">
+												<h2>{{ slide.name | raw }}</h2>
+												{{ slide.description | raw }}
+											</div>
+										</div>
+									{% endif %}
+
+								</div>
+							{% endif %}
+						</{{slickSlideElement}}>
+					{% endif %} 
 			{% endfor %}
 		</div>
 
