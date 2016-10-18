@@ -148,7 +148,7 @@
                     {{ __SELF__.property('appendDots') == blank ? '//' : '' }}       appendDots:         {{ __SELF__.property('appendDots') | raw}},
                     {{ __SELF__.property('prevArrow') == blank ? '//' : '' }}        prevArrow:          String('{{ __SELF__.property("prevArrow") | raw}}'),
                     {{ __SELF__.property('nextArrow') == blank ? '//' : '' }}        nextArrow:          String('{{ __SELF__.property("nextArrow") | raw}}'),
-                    {{ __SELF__.property('centerMode') == 0 ? '//' : '' }}       centerMode:         Boolean("{{ __SELF__.property('accessibility') }}") === true,
+                    {{ __SELF__.property('centerMode') == 0 ? '//' : '' }}       centerMode:         Boolean("{{ __SELF__.property('centerMode') }}") === true,
                     {{ __SELF__.property('centerPadding') == blank ? '//' : '' }}    centerPadding:      String("{{__SELF__.property('centerPadding')}}"),
                     {{ __SELF__.property('cssEase') == blank ? '//' : '' }}          cssEase:            String("{{__SELF__.property('cssEase')}}"),
                     {{ __SELF__.property('customPaging') == blank ? '//' : '' }}     customPaging:       {{__SELF__.property('customPaging') | raw}} ,
