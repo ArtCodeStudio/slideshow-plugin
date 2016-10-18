@@ -48,12 +48,14 @@
 				</video>
 			</div>
 			{% else %}
+			<div class="box">
 			<video id="{{ str_camel(__SELF__.alias) }}-slide-{{loop.index}}-video" preload muted width="100%" poster="{{ __SELF__.getResizedImage(slide.image) }}">
 				{% if slide.mp4 != blank %}
 				<source src="{{slide.mp4.path}}" type="video/mp4"> {% endif %} {% if slide.ogg != blank %}
 				<source src="{{slide.ogg.path}}" type="video/ogg"> {% endif %} {% if slide.webm != blank %}
 				<source src="{{slide.webm.path}}" type="video/webm"> {% endif %}
 			</video>
+			</div>
 			{% endif %} {% if slide.name != blank or slide.description != blank %}
 			<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
 				<div class="carousel-caption-content">
@@ -80,7 +82,11 @@
 			<div class="background-box {{ __SELF__.property('aspectRatio') }}" style="background-image: url({{ __SELF__.getResizedImage(slide.image) }});"
 				src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}"></div>
 			{% else %}
-			<img class="img-responsive img-fluid" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">			{% endif %} {% if slide.name != blank or slide.description != blank %}
+			<div class="box">
+				<img class="img-responsive img-fluid" src="{{ __SELF__.getResizedImage(slide.image) }}" alt="{{ __SELF__.getResizedImage(slide.image) }}">
+			</div>
+			{% endif %}
+			{% if slide.name != blank or slide.description != blank %}
 			<div class="carousel-caption-wrapper {{slide.caption_position != 'auto' ? slide.caption_position : __SELF__.property('captionPosition')}}">
 				<div class="carousel-caption-content">
 					<h2>{{ slide.name | raw }}</h2>
@@ -138,11 +144,11 @@
                 }
 				// console.log('CENTERMODE ',  {{ __SELF__.property('centerMode')}} )
                 slideshow.settings = {
-                    {{ __SELF__.property('accessibility') == blank ? '//' : '' }}    accessibility:      Boolean( {{ __SELF__.property('accessibility') }} ) === true ,
-                    {{ __SELF__.property('adaptiveHeight') == blank ? '//' : '' }}   adaptiveHeight:     Boolean( {{ __SELF__.property('adaptiveHeight') }} ) === true,
-                    {{ __SELF__.property('autoplay') == blank ? '//' : '' }}         autoplay:           Boolean( {{ __SELF__.property('autoplay') }} ) === true,
-                    {{ __SELF__.property('autoplaySpeed') == blank ? '//' : '' }}    autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),
-                    {{ __SELF__.property('arrows') == blank ? '//' : '' }}           arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true,
+                    {{ __SELF__.property('accessibility') == 0 ? '//' : '' }}    accessibility:      Boolean( {{ __SELF__.property('accessibility') }} ) === true ,
+                    {{ __SELF__.property('adaptiveHeight') == 0 ? '//' : '' }}   adaptiveHeight:     Boolean( {{ __SELF__.property('adaptiveHeight') }} ) === true,
+                    {{ __SELF__.property('autoplay') == 0 ? '//' : '' }}         autoplay:           Boolean( {{ __SELF__.property('autoplay') }} ) === true,
+                    {{ __SELF__.property('autoplaySpeed') == 0 ? '//' : '' }}    autoplaySpeed:      Number( {{ __SELF__.property('autoplaySpeed') }} ),
+                    {{ __SELF__.property('arrows') == 0 ? '//' : '' }}           arrows:             Boolean( {{ __SELF__.property('arrows') }} ) === true,
                     {{ __SELF__.property('asNavFor') == blank ? '//' : '' }}         asNavFor:           String("{{ __SELF__.property('asNavFor') }}"), 
                     {{ __SELF__.property('appendArrows') == blank ? '//' : '' }}     appendArrows:       String("{{ __SELF__.property('appendArrows') | raw}}"),
                     {{ __SELF__.property('appendDots') == blank ? '//' : '' }}       appendDots:         {{ __SELF__.property('appendDots') | raw}},
@@ -152,20 +158,20 @@
                     {{ __SELF__.property('centerPadding') == blank ? '//' : '' }}    centerPadding:      String("{{__SELF__.property('centerPadding')}}"),
                     {{ __SELF__.property('cssEase') == blank ? '//' : '' }}          cssEase:            String("{{__SELF__.property('cssEase')}}"),
                     {{ __SELF__.property('customPaging') == blank ? '//' : '' }}     customPaging:       {{__SELF__.property('customPaging') | raw}} ,
-                    {{ __SELF__.property('dots') == blank ? '//' : '' }}             dots:               Boolean( {{ __SELF__.property('dots') }} ) === true,
+                    {{ __SELF__.property('dots') == 0 ? '//' : '' }}             dots:               Boolean( {{ __SELF__.property('dots') }} ) === true,
                     {{ __SELF__.property('dotsClass') == blank ? '//' : '' }}        dotsClass:          String("{{__SELF__.property('dotsClass')}}"),
-                    {{ __SELF__.property('draggable') == blank ? '//' : '' }}        draggable:          Boolean( {{ __SELF__.property('draggable') }} ) === true,
-                    {{ __SELF__.property('fade') == blank ? '//' : '' }}             fade:               Boolean( {{ __SELF__.property('fade') }} ) === true,
-                    {{ __SELF__.property('focusOnSelect') == blank ? '//' : '' }}    focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true,
+                    {{ __SELF__.property('draggable') == 0 ? '//' : '' }}        draggable:          Boolean( {{ __SELF__.property('draggable') }} ) === true,
+                    {{ __SELF__.property('fade') == 0 ? '//' : '' }}             fade:               Boolean( {{ __SELF__.property('fade') }} ) === true,
+                    {{ __SELF__.property('focusOnSelect') == 0 ? '//' : '' }}    focusOnSelect:      Boolean( {{ __SELF__.property('focusOnSelect') }} ) === true,
                     {{ __SELF__.property('easing') == blank ? '//' : '' }}           easing:             String("{{__SELF__.property('easing')}}"),
                     {{ __SELF__.property('edgeFriction') == blank ? '//' : '' }}     edgeFriction:       parseFloat({{__SELF__.property('edgeFriction')}}),
-                    {{ __SELF__.property('infinite') == blank ? '//' : '' }}         infinite:           Boolean( {{ __SELF__.property('infinite') }} ) === true,
+                    {{ __SELF__.property('infinite') == 0 ? '//' : '' }}         infinite:           Boolean( {{ __SELF__.property('infinite') }} ) === true,
                     {{ __SELF__.property('initialSlide') == blank ? '//' : '' }}     initialSlide:       Number( {{ __SELF__.property('initialSlide') }} ),
                     {{ __SELF__.property('lazyLoad') == blank ? '//' : '' }}         lazyLoad:           String("{{__SELF__.property('lazyLoad')}}"),
-                    {{ __SELF__.property('mobileFirst') == blank ? '//' : '' }}      mobileFirst:        Boolean( {{ __SELF__.property('mobileFirst') }} ) === true,
-                    {{ __SELF__.property('pauseOnFocus') == blank ? '//' : '' }}     pauseOnFocus:       Boolean( {{ __SELF__.property('pauseOnFocus') }} ) === true,
-                    {{ __SELF__.property('pauseOnHover') == blank ? '//' : '' }}     pauseOnHover:       Boolean( {{ __SELF__.property('pauseOnHover') }} ) === true,
-                    {{ __SELF__.property('pauseOnDotsHover') == blank ? '//' : '' }} pauseOnDotsHover:   Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true,
+                    {{ __SELF__.property('mobileFirst') == 0 ? '//' : '' }}      mobileFirst:        Boolean( {{ __SELF__.property('mobileFirst') }} ) === true,
+                    {{ __SELF__.property('pauseOnFocus') == 0 ? '//' : '' }}     pauseOnFocus:       Boolean( {{ __SELF__.property('pauseOnFocus') }} ) === true,
+                    {{ __SELF__.property('pauseOnHover') == 0 ? '//' : '' }}     pauseOnHover:       Boolean( {{ __SELF__.property('pauseOnHover') }} ) === true,
+                    {{ __SELF__.property('pauseOnDotsHover') == 0 ? '//' : '' }} pauseOnDotsHover:   Boolean( {{ __SELF__.property('pauseOnDotsHover') }} ) === true,
                     {{ __SELF__.property('respondTo') == blank ? '//' : '' }}        respondTo:          String("{{__SELF__.property('respondTo')}}"),
                     {{ __SELF__.property('responsive') == blank ? '//' : '' }}       responsive:         {{__SELF__.property('responsive') | raw}},       
                     {{ __SELF__.property('rows') == blank ? '//' : '' }}             rows:               Number( {{ __SELF__.property('rows') }} ),
@@ -174,17 +180,17 @@
                     {{ __SELF__.property('slidesToShow') == blank ? '//' : '' }}     slidesToShow:       Number( {{ __SELF__.property('slidesToShow') }} ),
                     {{ __SELF__.property('slidesToScroll') == blank ? '//' : '' }}   slidesToScroll:     Number( {{ __SELF__.property('slidesToScroll') }} ),
                     {{ __SELF__.property('speed') == blank ? '//' : '' }}            speed:              Number( {{ __SELF__.property('speed') }} ),
-                    {{ __SELF__.property('swipe') == blank ? '//' : '' }}            swipe:              Boolean( {{ __SELF__.property('swipe') }} ) === true,
-                    {{ __SELF__.property('swipeToSlide') == blank ? '//' : '' }}     swipeToSlide:       Boolean( {{ __SELF__.property('swipeToSlide') }} ) === true,
-                    {{ __SELF__.property('touchMove') == blank ? '//' : '' }}        touchMove:          Boolean( {{ __SELF__.property('touchMove') }} ) === true,
+                    {{ __SELF__.property('swipe') == 0 ? '//' : '' }}            swipe:              Boolean( {{ __SELF__.property('swipe') }} ) === true,
+                    {{ __SELF__.property('swipeToSlide') == 0 ? '//' : '' }}     swipeToSlide:       Boolean( {{ __SELF__.property('swipeToSlide') }} ) === true,
+                    {{ __SELF__.property('touchMove') == 0 ? '//' : '' }}        touchMove:          Boolean( {{ __SELF__.property('touchMove') }} ) === true,
                     {{ __SELF__.property('touchThreshold') == blank ? '//' : '' }}   touchThreshold:     Number( {{ __SELF__.property('touchThreshold') }} ),
-                    {{ __SELF__.property('useCSS') == blank ? '//' : '' }}           useCSS:             Boolean( {{ __SELF__.property('useCSS') }} ) === true,
-                    {{ __SELF__.property('useTransform') == blank ? '//' : '' }}     useTransform:       Boolean( {{ __SELF__.property('useTransform') }} ) === true,
-                    {{ __SELF__.property('variableWidth') == blank ? '//' : '' }}    variableWidth:      Boolean( {{ __SELF__.property('variableWidth') }} ) === true,
-                    {{ __SELF__.property('vertical') == blank ? '//' : '' }}         vertical:           Boolean( {{ __SELF__.property('vertical') }} ) === true,
-                    {{ __SELF__.property('verticalSwiping') == blank ? '//' : '' }}  verticalSwiping:    Boolean( {{ __SELF__.property('verticalSwiping') }} ) === true,
+                    {{ __SELF__.property('useCSS') == 0 ? '//' : '' }}           useCSS:             Boolean( {{ __SELF__.property('useCSS') }} ) === true,
+                    {{ __SELF__.property('useTransform') == 0 ? '//' : '' }}     useTransform:       Boolean( {{ __SELF__.property('useTransform') }} ) === true,
+                    {{ __SELF__.property('variableWidth') == 0 ? '//' : '' }}    variableWidth:      Boolean( {{ __SELF__.property('variableWidth') }} ) === true,
+                    {{ __SELF__.property('vertical') == 0 ? '//' : '' }}         vertical:           Boolean( {{ __SELF__.property('vertical') }} ) === true,
+                    {{ __SELF__.property('verticalSwiping') == 0 ? '//' : '' }}  verticalSwiping:    Boolean( {{ __SELF__.property('verticalSwiping') }} ) === true,
                     {{ __SELF__.property('rtl') == blank ? '//' : '' }}              rtl:                Boolean( {{ __SELF__.property('rtl') }} ) === true,
-                    {{ __SELF__.property('waitForAnimate') == blank ? '//' : '' }}   waitForAnimate:     Boolean( {{ __SELF__.property('waitForAnimate') }} ) === true,
+                    {{ __SELF__.property('waitForAnimate') == 0 ? '//' : '' }}   waitForAnimate:     Boolean( {{ __SELF__.property('waitForAnimate') }} ) === true,
                     {{ __SELF__.property('zIndex') == blank ? '//' : '' }}           zIndex:             Number( {{ __SELF__.property('zIndex') }}),
                     // custom slideshow plugin settings
                     {{ __SELF__.property('nextSlideOnEnd') == blank ? '//' : '' }}   nextSlideOnEnd:     Boolean( {{__SELF__.property('nextSlideOnEnd')}} ),
