@@ -13,6 +13,7 @@ fields:
         label: jumplink.slideshow::lang.fields.slide.is_published
         span: left
         type: checkbox
+        default: tru'
     description:
         label: jumplink.slideshow::lang.fields.slide.description
         type: richeditor
