@@ -1,4 +1,8 @@
-This plugin is an adaptation from the [Flosch Slideshow plugin](https://github.com/flo-sch/slideshow-plugin) and may diverge significantly from the original in the course of its development.
+This plugin allows you to manage a collection of slideshows from the October administration area.
+
+You can create multiple slideshows, each having slides. A slide is an entity composed of an image, with optional title, description and target link.
+
+This plugin is an adaptation from the [Flosch Slideshow plugin](https://github.com/flo-sch/slideshow-plugin) and may diverge significantly from the original in the course of its development, e.g. we are using [Slick](http://kenwheeler.github.io/slick/) instad of the Bootstrap Carousel.
 
 ## Administration
 
