@@ -13,7 +13,7 @@ fields:
         label: jumplink.slideshow::lang.fields.slide.is_published
         span: left
         type: checkbox
-        default: tru'
+        default: true
     description:
         label: jumplink.slideshow::lang.fields.slide.description
         type: richeditor
@@ -43,6 +43,7 @@ fields:
     custom_ratio:
         label: jumplink.slideshow::lang.fields.slide.custom_ratio
         type: number
+        default: null
     caption_position:
         label: jumplink.slideshow::lang.fields.slide.caption_position
         type: dropdown
