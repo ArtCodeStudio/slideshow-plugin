@@ -283,7 +283,7 @@
                 
                 if( slideshow.settings.autoplayOnShow ) {
                     slideshow.$slider.on('afterChange', function(event, slick, currentSlide){
-                        console.log("onAfterChange", currentSlide);
+                        //console.log("onAfterChange", currentSlide);
                         var theId = slideshow.videoSlideSelector.replace('[index]', currentSlide+1);
                         var $video = $(theId);
                         var theVideo = $video.get(0);
@@ -300,20 +300,17 @@
                     // TODO Do this in pure javascript?
                     {% if autoplayIndex != -1 %}
                         slideshow.$slider.on('init reInit', function(event, slick) {
-                            console.log("on", event.type);
+                            //console.log("on", event.type);
                             var theId = slideshow.videoSlideSelector.replace('[index]', '{{autoplayIndex}}');
                             var $video = $(theId);
                             var theVideo = $video.get(0);
-                            console.log("theVideo with id", theId);
+                            //console.log("theVideo with id", theId);
                             if (theVideo != null) {
-                                console.log("!= null");
+                                //console.log("!= null");
                                 slideshow.settings.autoplay = false;
                                 //slideshow.$slider.slick('slickPause');
                                 theVideo.play();
                                 playingVideo = {{autoplayIndex-1}}; // TODO Do this in pure javascript?
-                            }
-                            else {
-                                console.log("== null");
                             }
                         });
                     {% endif %}
@@ -331,7 +328,7 @@
              * remove this if you wanna init manually
              * example: currentSlideshow.pause()
              */
-            var currentSlideshow = {{ str_camel(__SELF__.alias) }}Init();
+            {{ __SELF__.property('autoInitialize') == blank ? '//' : '' }} var currentSlideshow = {{ str_camel(__SELF__.alias) }}Init();
         </script>
     {% endput %}
 {% endif %}

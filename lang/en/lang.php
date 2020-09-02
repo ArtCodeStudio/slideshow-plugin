@@ -55,6 +55,12 @@
                     'placeholder' => 'true',
                 ],
 
+                'autoInitialize' => [
+                    'title' => 'autoInitialize',
+                    'description' => 'This will automatically initialize the slideshow with: var currentSlideshow = {{ str_camel(__SELF__.alias) }}Init(); \nUncheck if you want to do it manually.',
+                    'placeholder' => 'true',
+                ],
+
 
                 'aspectRatio' => [
                     'title' => 'Aspect Ratio',

@@ -57,7 +57,12 @@ class Slideshow extends ComponentBase
                 'default'           => 0,
                 'group'             => 'Asset Injection'
             ],
-
+            'autoInitialize' => [
+                'title'             => 'jumplink.slideshow::lang.components.slideshow.properties.autoInitialize.title',
+                'description'       => 'jumplink.slideshow::lang.components.slideshow.properties.autoInitialize.description',
+                'type'              => 'checkbox',
+                'default'           => 1
+            ],
             'aspectRatio' => [
                 'title' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.title',
                 'description' => 'jumplink.slideshow::lang.components.slideshow.properties.aspectRatio.description',
