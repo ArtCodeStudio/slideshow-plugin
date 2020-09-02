@@ -576,7 +576,7 @@ class Slideshow extends ComponentBase
             }])
         ;
 
-        $this->slideshow = $slideshowQueryBuilder->firstOrFail();
+        $this->slideshow = $slideshowQueryBuilder->first();
 
         if ($this->property('injectJQuery'))
         {

@@ -10,11 +10,11 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'Slideshow',
+            'name' => 'Slick Slideshow',
             'description' => 'Manage Slick carousels with additional content.',
-            'author' => 'Moritz Raguschat [JumpLink Network]',
+            'author' => 'Moritz Raguschat [JumpLink network], Pascal Garber [JumpLink network], Flosch',
             'icon' => 'icon-picture-o',
-            'homepage' => 'http://jumplink.eu'
+            'homepage' => 'https://jumplink.eu'
         ];
     }
 
