@@ -14,6 +14,16 @@ fields:
         span: left
         type: checkbox
         default: true
+    section:
+        label: Slide Sektion
+        type: dropdown
+        emptyOption: -- keine Sektion --
+        options:
+            verwendung: Verwendung (rot)
+            blog: Blog (gelb)
+            krauter: Kräuter (grün)
+            grabpflege: Grabpflege (grau)
+
     description:
         label: jumplink.slideshow::lang.fields.slide.description
         type: richeditor
@@ -22,21 +32,21 @@ fields:
         type: fileupload
         mode: image
         fileTypes: jpg,jpeg,png,bmp,gif
-    mp4:
-        label: jumplink.slideshow::lang.fields.slide.mp4
-        type: fileupload
-        mode: file
-        fileTypes: mp4
-    ogg:
-        label: jumplink.slideshow::lang.fields.slide.ogg
-        type: fileupload
-        mode: file
-        fileTypes: ogg,ogv
-    webm:
-        label: jumplink.slideshow::lang.fields.slide.webm
-        type: fileupload
-        mode: file
-        fileTypes: webm
+    # mp4:
+    #     label: jumplink.slideshow::lang.fields.slide.mp4
+    #     type: fileupload
+    #     mode: file
+    #     fileTypes: mp4
+    # ogg:
+    #     label: jumplink.slideshow::lang.fields.slide.ogg
+    #     type: fileupload
+    #     mode: file
+    #     fileTypes: ogg,ogv
+    # webm:
+    #     label: jumplink.slideshow::lang.fields.slide.webm
+    #     type: fileupload
+    #     mode: file
+    #     fileTypes: webm
     aspect_ratio:
         label: jumplink.slideshow::lang.fields.slide.aspect_ratio
         type: dropdown

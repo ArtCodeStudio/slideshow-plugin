@@ -5,9 +5,9 @@ $slick-arrow-opacity-on-hover: 1 !default;
 $slick-arrow-opacity-disabled: 0.4 !default;
 
 // default
-$slick-font-path: "./fonts/" !default;
+$slick-font-path: "../../fonts/" !default;
 $slick-font-family: "slick" !default;
-$slick-loader-path: "./" !default;
+$slick-loader-path: "../vendor/slick-carousel/" !default;
 $slick-arrow-color: white !default;
 $slick-dot-color: black !default;
 $slick-dot-color-active: $slick-dot-color !default;
